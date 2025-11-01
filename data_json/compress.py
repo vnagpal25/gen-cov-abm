@@ -2,7 +2,7 @@ import gzip
 import json
 
 
-file_name = "tree.json"
+file_name = "root-sequence.json"
 with open(file_name, "r") as f:
     data = json.load(f)
 
