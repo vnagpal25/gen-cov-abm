@@ -128,10 +128,10 @@ def main():
     model.eval()  # Disable dropout
 
     # Determine device
-    if torch.backends.mps.is_available():
-        device = torch.device("mps")
-    elif torch.cuda.is_available():
+    if torch.cuda.is_available():
         device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")
     else:
         device = torch.device("cpu")
 
@@ -140,7 +140,7 @@ def main():
     print(f"Using device: {device}")
 
     # Generate embeddings
-    batch_size = 32  # Adjust based on GPU memory
+    batch_size = 16  # Adjust based on GPU memory
 
     print("Generating N-sequence embeddings...")
     n_embeddings, n_ids = generate_embeddings(
