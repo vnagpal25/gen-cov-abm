@@ -1,0 +1,28 @@
+Starting full GPT training...
+==================================
+Project root: /home/vnagpal/cse598/gen-cov-abm
+Reading from: /home/vnagpal/cse598/gen-cov-abm/data/ma_sequences.csv
+Loaded 4070 sequences
+Downloading: "https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt" to /home/vnagpal/.cache/torch/hub/checkpoints/esm2_t33_650M_UR50D.pt
+Downloading: "https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t33_650M_UR50D-contact-regression.pt" to /home/vnagpal/.cache/torch/hub/checkpoints/esm2_t33_650M_UR50D-contact-regression.pt
+Model loaded successfully
+Using device: cuda
+Generating N-sequence embeddings...
+Processing 4070 sequences from 'n_sequence' column...
+Final embeddings shape for 'n_sequence': (4070, 1280)
+Generating S-sequence embeddings...
+Processing 4070 sequences from 's_sequence' column...
+Final embeddings shape for 's_sequence': (4070, 1280)
+
+[4/4] Saving embeddings...
+
+Saving n_sequence embeddings...
+Saved to /home/vnagpal/cse598/gen-cov-abm/data/n_sequence_embeddings.npy
+Saved IDs to /home/vnagpal/cse598/gen-cov-abm/data/n_sequence_ids.txt
+Saved to /home/vnagpal/cse598/gen-cov-abm/data/n_sequence_embeddings.csv
+
+Saving s_sequence embeddings...
+Saved to /home/vnagpal/cse598/gen-cov-abm/data/s_sequence_embeddings.npy
+Saved IDs to /home/vnagpal/cse598/gen-cov-abm/data/s_sequence_ids.txt
+Saved to /home/vnagpal/cse598/gen-cov-abm/data/s_sequence_embeddings.csv
+Inference completed!
