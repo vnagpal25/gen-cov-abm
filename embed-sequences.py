@@ -117,7 +117,7 @@ def save_embeddings(embeddings, ids, output_dir, prefix):
 
 def main():
     # Load sequence data
-    seq_file_path = get_data_dir() / "ma_sequences.csv"
+    seq_file_path = get_data_dir() / "all_sequences.csv"
     print(f"Reading from: {seq_file_path}")
     seq_df = pd.read_csv(seq_file_path)
     print(f"Loaded {len(seq_df)} sequences")
@@ -136,8 +136,7 @@ def main():
         device = torch.device("cpu")
 
     model = model.to(device)
-    print("Model loaded successfully")
-    print(f"Using device: {device}")
+    print("Model loaded successfully on device: {device}")
 
     # Generate embeddings
     batch_size = 16  # Adjust based on GPU memory
