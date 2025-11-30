@@ -32,4 +32,4 @@ echo "Computing embeddings using ESM-2 for proteins: $PROTEINS"
 
 # Run embedding generation with protein list
 data/
-python embed-sequences.py $PROTEINS --input-file all_sequences-v2.csv --batch_size 16
+python embed-sequences.py $PROTEINS --input-file all_sequences-v2.csv --batch-size 16
