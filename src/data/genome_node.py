@@ -188,81 +188,90 @@ class CovidGenomeSequence:
 
     def generate_sequences(self, parent_sequences, proteins: List[str] = None):
         """
-        Efficiently generate sequences for the current node by applying its mutations
-        to the parent's sequences and then passing the result to its children.
+        Efficiently generate sequences by maintaining correct reference coordinates.
 
-        Args:
-            parent_sequences (dict): The dictionary of sequences (N, S, ORF1a, etc.)
-                after applying all mutations up to the parent node.
+        Internal storage (parent_sequences) uses lists of strings where:
+          - Deletions are marked as '-' (maintaining index alignment)
+          - Insertions are appended to the residue at the site (maintaining index alignment)
         """
         if not proteins:
             proteins = list[str](self.mutations.keys())
 
-        # initialize the current node sequences from the parent's already-mutated sequences.
-        sequence_map = {protein: parent_sequences[protein] for protein in proteins}
+        # initialize seq map from parent
+        # deep copy because we are modifying lists in place
+        sequence_map = {
+            p: list(parent_sequences[p]) if p in parent_sequences else []
+            for p in proteins
+        }
 
-        # apply mutations for each protein for *this node's branch*
+        # Apply mutations
         for protein, mutations in self.mutations.items():
             if protein not in proteins:
                 continue
-            # Convert the sequence to a list for mutable, O(1) character access
-            prot_seq = list[Any](sequence_map[protein])
 
-            # deletions require special handling as they change sequence length
-            # so we process them after substitutions/insertions.
-            deletions_to_apply = []
+            prot_seq = sequence_map[protein]
 
             for mutation in mutations:
                 orig_prot, position, new_prot = mutation
-                position = int(position) - 1  # Convert to 0-based indexing
+                position = int(position) - 1  # 0-based index
 
-                # deletion (new_prot is '-') or insertion (orig_prot is '-')
-                if new_prot == "-":
-                    deletions_to_apply.append(position)
+                # ---- sanity check ----
+                # want to make sure that the previous protein matches
+                # what the mutation expects it's changing
+                try:
 
-                    # Apply sanity check for deletion against the current list
-                    try:
-                        assert prot_seq[position] == orig_prot
-                    except Exception as e:
-                        print(
-                            f"Protein {protein}: Expected {orig_prot} at deletion position {position} (1-based: {position+1}), found {prot_seq[position]}."
-                        )
-                        raise e
+                    current_val = prot_seq[position]
 
-                # Handle Substitution (e.g., A87T)
-                elif orig_prot != "-":
-                    # Sanity check for substitution
-                    try:
-                        assert prot_seq[position] == orig_prot
-                    except Exception as e:
-                        # Log error but don't strictly halt unless you need perfect alignment
-                        print(
-                            f"Protein {protein}: Expected {orig_prot} at substitution position {position} (1-based: {position+1}), found {prot_seq[position]}. Applying mutation anyway."
-                        )
+                    # if len(current_val) > 1:
+                    #     print('multiple proteins here')
 
-                        # print(f"Previous five: {prot_seq[position - 5: position]}")
-                        # print(f"Next five: {prot_seq[position + 1: position + 6]}")
-                    # Apply the substitution
-                    prot_seq[position] = new_prot
-                elif orig_prot == "-":
+                    if len(current_val) > 1:
+                        current_base = current_val[0]
+                    else:
+                        current_base = current_val
+                    assert current_base == orig_prot
+                except AssertionError:
                     print(
-                        "Whoopsy daisy that is a complex case that needs to be handled"
+                        f"Warning {self.name}: {protein} pos {position+1} expected {orig_prot} found {current_base}"
                     )
 
-            # apply deletions
-            # sort positions in reverse order to ensure index validity when deleting.
-            deletions_to_apply.sort(reverse=True)
-            for pos in deletions_to_apply:
-                prot_seq.pop(pos)
+                # handle deletion (X, pos, -)
+                if new_prot == "-":
+                    # replace with gap character
+                    prot_seq[position] = "-"
+                # handle insertion (-, pos, X)
+                elif orig_prot == "-":
+                    # append to previous residue to maintain indices.
+                    if position < len(prot_seq):
+                        prot_seq[position] += new_prot
+                    else:
+                        print(
+                            f"Warning: {new_prot} inserted outside of reference frame"
+                        )
+                        prot_seq.append(new_prot)
+                # handle substitution (X, Y)
+                else:
+                    # Simple overwrite
+                    # If there was an existing insertion here, we might need to preserve it
+                    # but usually substitutions replace the 'base' amino acid.
+                    if len(prot_seq[position]) == 1:
+                        # Keep the insertion tail, change the head
+                        prot_seq[position] = new_prot
 
-            # convert back to string once
-            sequence_map[protein] = "".join(prot_seq)
+                    else:
+                        print(
+                            f"Warning: Substituting {new_prot} at previous insertion spot"
+                        )
+                        prot_seq[position] = new_prot + prot_seq[position][1:]
 
-        # assign the final sequences to the current node
-        self.n_sequence = sequence_map["N"]
-        self.s_sequence = sequence_map["S"]
+            sequence_map[protein] = prot_seq
 
-        # recursively call for children, passing this node's mutated sequences
+        # remove gap characters
+        self.n_sequence = "".join(sequence_map.get("N", "")).replace("-", "")
+        self.s_sequence = "".join(sequence_map.get("S", "")).replace("-", "")
+        self.orf1a_sequence = "".join(sequence_map.get("ORF1a", "")).replace("-", "")
+
+        # pass aligned mutated proteins to children for further mutation
         for child in self.children:
             child.generate_sequences(sequence_map, proteins)
 
