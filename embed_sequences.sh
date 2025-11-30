@@ -14,15 +14,22 @@
 #SBATCH --output=log.out
 #SBATCH --error=error.out
 
-echo "Starting full GPT training..."
-echo "=================================="
 
 # Set up environment
 
 source /sw/pkgs/arc/python3.10-anaconda/2023.03/etc/profile.d/conda.sh
 conda activate gen_cov_abm
 
-# Training hyperparameters for full model
-python embed-sequences.py
+PROTEINS="n_sequence s_sequence"
 
-echo "Inference completed!"
+# Optional: Override proteins from command line
+if [ $# -gt 0 ]; then
+    PROTEINS="$@"
+fi
+
+echo "Computing embeddings using ESM-2 for proteins: $PROTEINS"
+
+# Run embedding generation with protein list
+python embed-sequences.py $PROTEINS
+
+echo "Embedding generation completed!"

@@ -7,6 +7,7 @@ saved in multiple formats for downstream analysis.
 """
 
 import sys
+import argparse
 from pathlib import Path
 
 # Add project root to path
@@ -116,13 +117,45 @@ def save_embeddings(embeddings, ids, output_dir, prefix):
 
 
 def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(
+        description="Generate ESM-2 embeddings for protein sequences"
+    )
+    parser.add_argument(
+        "proteins",
+        nargs="+",
+        help="List of protein column names to generate embeddings for (e.g., n_sequence s_sequence)",
+    )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=16,
+        help="Batch size for embedding generation (default: 16)",
+    )
+    parser.add_argument(
+        "--input-file",
+        type=str,
+        default="all_sequences.csv",
+        help="Input CSV file containing sequences (default: all_sequences.csv)",
+    )
+    args = parser.parse_args()
+
     # Load sequence data
-    seq_file_path = get_data_dir() / "all_sequences.csv"
+    seq_file_path = get_data_dir() / args.input_file
     print(f"Reading from: {seq_file_path}")
     seq_df = pd.read_csv(seq_file_path)
     print(f"Loaded {len(seq_df)} sequences")
 
+    # Verify that requested proteins exist in the dataframe
+    missing_proteins = [p for p in args.proteins if p not in seq_df.columns]
+    if missing_proteins:
+        raise ValueError(
+            f"The following protein columns are not in the dataset: {missing_proteins}\n"
+            f"Available columns: {list(seq_df.columns)}"
+        )
+
     # Load ESM-2 model
+    print("\nLoading ESM-2 model...")
     model, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
     batch_converter = alphabet.get_batch_converter()
     model.eval()  # Disable dropout
@@ -136,27 +169,23 @@ def main():
         device = torch.device("cpu")
 
     model = model.to(device)
-    print("Model loaded successfully on device: {device}")
+    print(f"Model loaded successfully on device: {device}")
 
-    # Generate embeddings
-    batch_size = 16  # Adjust based on GPU memory
-
-    print("Generating N-sequence embeddings...")
-    n_embeddings, n_ids = generate_embeddings(
-        seq_df, "n_sequence", model, batch_converter, device, batch_size
-    )
-
-    print("Generating S-sequence embeddings...")
-    s_embeddings, s_ids = generate_embeddings(
-        seq_df, "s_sequence", model, batch_converter, device, batch_size
-    )
-
-    # Save embeddings
-    print("\n[4/4] Saving embeddings...")
+    # Output directory
     output_dir = get_data_dir()
 
-    save_embeddings(n_embeddings, n_ids, output_dir, "n_sequence")
-    save_embeddings(s_embeddings, s_ids, output_dir, "s_sequence")
+    # Generate embeddings for each protein in the list
+    for protein_name in args.proteins:
+        print(f"Processing protein: {protein_name}")
+
+        embeddings, ids = generate_embeddings(
+            seq_df, protein_name, model, batch_converter, device, args.batch_size
+        )
+
+        # Save embeddings
+        save_embeddings(embeddings, ids, output_dir, protein_name)
+
+    print("All embeddings generated successfully!")
 
 
 if __name__ == "__main__":
