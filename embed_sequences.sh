@@ -20,7 +20,8 @@
 source /sw/pkgs/arc/python3.10-anaconda/2023.03/etc/profile.d/conda.sh
 conda activate gen_cov_abm
 
-PROTEINS="n_sequence s_sequence orf1a_sequence"
+# PROTEINS="n_sequence s_sequence orf1a_sequence"
+PROTEINS="orf1a_sequence"
 
 # Optional: Override proteins from command line
 if [ $# -gt 0 ]; then
@@ -31,4 +32,4 @@ echo "Computing embeddings using ESM-2 for proteins: $PROTEINS"
 
 # Run embedding generation with protein list
 data/
-python embed-sequences.py $PROTEINS --input-file all_sequences-v2.csv
+python embed-sequences.py $PROTEINS --input-file all_sequences-v2.csv --batch_size 16
