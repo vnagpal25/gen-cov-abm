@@ -1,28 +1,16 @@
-Starting full GPT training...
-==================================
+Computing embeddings using ESM-2 for proteins: orf1a_sequence
 Project root: /home/vnagpal/cse598/gen-cov-abm
-Reading from: /home/vnagpal/cse598/gen-cov-abm/data/ma_sequences.csv
-Loaded 4070 sequences
-Downloading: "https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt" to /home/vnagpal/.cache/torch/hub/checkpoints/esm2_t33_650M_UR50D.pt
-Downloading: "https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t33_650M_UR50D-contact-regression.pt" to /home/vnagpal/.cache/torch/hub/checkpoints/esm2_t33_650M_UR50D-contact-regression.pt
-Model loaded successfully
-Using device: cuda
-Generating N-sequence embeddings...
-Processing 4070 sequences from 'n_sequence' column...
-Final embeddings shape for 'n_sequence': (4070, 1280)
-Generating S-sequence embeddings...
-Processing 4070 sequences from 's_sequence' column...
-Final embeddings shape for 's_sequence': (4070, 1280)
+Reading from: /home/vnagpal/cse598/gen-cov-abm/data/all_sequences-v2.csv
+Loaded 14761 sequences
 
-[4/4] Saving embeddings...
+Loading ESM-2 model...
+Model loaded successfully on device: cuda
+Processing protein: orf1a_sequence
+Processing 14761 sequences from 'orf1a_sequence' column...
+Final embeddings shape for 'orf1a_sequence': (14761, 1280)
 
-Saving n_sequence embeddings...
-Saved to /home/vnagpal/cse598/gen-cov-abm/data/n_sequence_embeddings.npy
-Saved IDs to /home/vnagpal/cse598/gen-cov-abm/data/n_sequence_ids.txt
-Saved to /home/vnagpal/cse598/gen-cov-abm/data/n_sequence_embeddings.csv
-
-Saving s_sequence embeddings...
-Saved to /home/vnagpal/cse598/gen-cov-abm/data/s_sequence_embeddings.npy
-Saved IDs to /home/vnagpal/cse598/gen-cov-abm/data/s_sequence_ids.txt
-Saved to /home/vnagpal/cse598/gen-cov-abm/data/s_sequence_embeddings.csv
-Inference completed!
+Saving orf1a_sequence embeddings...
+Saved to /home/vnagpal/cse598/gen-cov-abm/data/orf1a_sequence_embeddings.npy
+Saved IDs to /home/vnagpal/cse598/gen-cov-abm/data/orf1a_sequence_ids.txt
+Saved to /home/vnagpal/cse598/gen-cov-abm/data/orf1a_sequence_embeddings.csv
+All embeddings generated successfully!
