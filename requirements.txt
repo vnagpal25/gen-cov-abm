@@ -12,3 +12,16 @@ dspy>=0.1.5
 dask>=2024.12.1
 epiweeks
 scipy
+fair-esm>=2.0.0
+ipykernel>=7.1.0
+jinja2>=3.1.6
+matplotlib>=3.10.7
+nexusformat>=2.0.0
+pandas>=2.3.3
+scikit-learn>=1.3.0
+seaborn>=0.13.2
+torch>=2.9.1
+toytree>=3.0.10
+tqdm>=4.67.1
+wandb>=0.18.0
+asdf
