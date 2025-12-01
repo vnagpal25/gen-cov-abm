@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from model_utils import EmbedAttenSeq, DecodeSeq
+from .model_utils import EmbedAttenSeq, DecodeSeq
 
 MIN_VAL_PARAMS = {
     "abm-covid": [

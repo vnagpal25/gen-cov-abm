@@ -14,13 +14,36 @@ disease:
 substeps:
   make_isolation_decision:
     key: policy
+    active_agents: agents
+    observation:
+      - agents
+    update:
+      - agents
 
   new_transmission:
     key: transition
+    active_agents: agents
+    observation:
+      - agents
+    update:
+      - agents
 
   seirm_progression:
     key: transition
+    active_agents: agents
+    observation:
+      - agents
+    update:
+      - agents
 
-state: {}
 
-environment: {}
+
+
+state:
+  environment: {}
+  agents: {}
+  objects: {}
+  locations: {}
+  policies: {}
+  network: {}
+  active_agents: {}

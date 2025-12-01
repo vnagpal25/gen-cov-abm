@@ -2,44 +2,64 @@ from enum import Enum
 
 
 class Neighborhood(Enum):
-    ASTORIA = 0
-    UPPER_WEST_SIDE = 1
-    BAY_RIDGE = 2
-    PELHAM_BAY = 3
-    PORT_RICHMOND = 4
+    SUFFOLK = 0
+    BRISTOL = 1
+    NORFOLK = 2
+    PLYMOUTH = 3
+    WORCESTER = 4
+    ESSEX = 5
+    BARNSTABLE = 6
+    BERKSHIRE = 7
+    HAMPDEN = 8
+    HAMPSHIRE = 9
 
     @property
     def name(self) -> str:
         return {
-            Neighborhood.ASTORIA: "Astoria",
-            Neighborhood.UPPER_WEST_SIDE: "Upper West Side",
-            Neighborhood.BAY_RIDGE: "Bay Ridge",
-            Neighborhood.PELHAM_BAY: "Pelham Bay",
-            Neighborhood.PORT_RICHMOND: "Port Richmond",
+            Neighborhood.SUFFOLK: "Suffolk County",
+            Neighborhood.BRISTOL: "Bristol County",
+            Neighborhood.NORFOLK: "Norfolk County",
+            Neighborhood.PLYMOUTH: "Plymouth County",
+            Neighborhood.WORCESTER: "Worcester County",
+            Neighborhood.ESSEX: "Essex County",
+            Neighborhood.BARNSTABLE: "Barnstable County",
+            Neighborhood.BERKSHIRE: "Berkshire County",
+            Neighborhood.HAMPDEN: "Hampden County",
+            Neighborhood.HAMPSHIRE: "Hampshire County",
         }[self]
 
     @property
     def nta_id(self) -> str:
         return {
-            Neighborhood.ASTORIA: "QN0103",
-            Neighborhood.UPPER_WEST_SIDE: "MN0702",
-            Neighborhood.BAY_RIDGE: "BK1001",
-            Neighborhood.PELHAM_BAY: "BX1003",
-            Neighborhood.PORT_RICHMOND: "SI0106",
+            Neighborhood.SUFFOLK: "25025",
+            Neighborhood.BRISTOL: "25005",
+            Neighborhood.NORFOLK: "25021",
+            Neighborhood.PLYMOUTH: "25023",
+            Neighborhood.WORCESTER: "25027",
+            Neighborhood.ESSEX: "25009",
+            Neighborhood.BARNSTABLE: "25001",
+            Neighborhood.BERKSHIRE: "25003",
+            Neighborhood.HAMPDEN: "25013",
+            Neighborhood.HAMPSHIRE: "25015",
         }[self]
 
     @property
     def population(self) -> int:
         return {
-            # this is a bug. the population is actually 36835, but since we are using a config file
-            # with a population of 37518, this is what we set it to here as well.
-            Neighborhood.ASTORIA: 37518,
-            Neighborhood.UPPER_WEST_SIDE: 58412,
-            Neighborhood.BAY_RIDGE: 67514,
-            Neighborhood.PELHAM_BAY: 49097,
-            Neighborhood.PORT_RICHMOND: 23441,
+            Neighborhood.SUFFOLK: 703621,
+            Neighborhood.BRISTOL: 537023,
+            Neighborhood.NORFOLK: 674394,
+            Neighborhood.PLYMOUTH: 490318,
+            Neighborhood.WORCESTER: 773460,
+            Neighborhood.ESSEX: 739578,
+            Neighborhood.BARNSTABLE: 207666,
+            Neighborhood.BERKSHIRE: 116658,
+            Neighborhood.HAMPDEN: 432372,
+            Neighborhood.HAMPSHIRE: 136121,
         }[self]
 
     @property
     def text(self) -> str:
-        return f"lives in {self.name}, New York, a neighborhood with a population of {self.population}"
+        return (
+            f"lives in {self.name}, Massachusetts, a county with a population of {self.population}"
+        )

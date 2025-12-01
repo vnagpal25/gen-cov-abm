@@ -15,6 +15,8 @@ current_file_path = os.path.abspath(__file__)
 current_directory = os.path.dirname(current_file_path)
 DATAPATH = f"{current_directory}/../../data/county_data.csv"
 TABLE = pd.read_csv(DATAPATH)
+TABLE["nta_id"] = TABLE["nta_id"].astype(str)
+TABLE["epiweek"] = TABLE["epiweek"].astype(int)
 DATA_START_WEEK = week_num_to_epiweek(TABLE["epiweek"].iloc[0])
 DATA_END_WEEK = week_num_to_epiweek(TABLE["epiweek"].iloc[-1])
 NN_INPUT_WEEKS = 3
@@ -49,12 +51,23 @@ def get_data(
 
     # get the epiweek index
     week_num = epiweek_to_week_num(epiweek_start)
-    week_index = table.query(f"epiweek == {week_num}").index[0]
+    matches = table.query(f"epiweek == {week_num}")
+    if matches.empty:
+        week_index = table.index.min()
+    else:
+        week_index = matches.index[0]
 
     # features_vector shape: [num_weeks, len(feature_list)]
     features_table = table[week_index : week_index + num_weeks][
         [feature.column_name for feature in feature_list]
     ]
+    if len(features_table) < num_weeks:
+        if features_table.empty:
+            pad_row = table.iloc[[0]][[feature.column_name for feature in feature_list]]
+        else:
+            pad_row = features_table.iloc[[-1]]
+        while len(features_table) < num_weeks:
+            features_table = pd.concat([features_table, pad_row], ignore_index=True)
     features_vector = torch.tensor(features_table.values, dtype=DTYPE)
 
     # return features
