@@ -1,0 +1,13 @@
+/var/spool/slurmd.spool/job37039425/slurm_script: line 14: /home/namishah/.venvs/covid/bin/activate: No such file or directory
+Traceback (most recent call last):
+  File "/sw/pkgs/arc/python/3.10.4/lib/python3.10/runpy.py", line 187, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/sw/pkgs/arc/python/3.10.4/lib/python3.10/runpy.py", line 110, in _get_module_details
+    __import__(pkg_name)
+  File "/home/namishah/alex/gen-cov-abm/covid_abm/__init__.py", line 1, in <module>
+    from AgentTorch.agent_torch.core import Runner, Registry
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/__init__.py", line 1, in <module>
+    from .registry import Registry
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/registry.py", line 1, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'

@@ -221,7 +221,7 @@ def main():
         choices=["cases", "deaths"],
         help="Ground truth column to match.",
     )
-    parser.add_argument("--epochs", type=int, default=50, help="Training epochs per window.")
+    parser.add_argument("--epochs", type=int, default=10, help="Training epochs per window.")
     parser.add_argument("--lr", type=float, default=5e-3, help="Learning rate.")
     parser.add_argument(
         "--output_dir",

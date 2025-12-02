@@ -1,0 +1,2 @@
+/home/namishah/alex/gen-cov-abm/covid_abm/substeps/new_transmission/transition.py:349: UserWarning: The use of `x.T` on tensors of dimension other than 2 to reverse their shape is deprecated and it will throw an error in a future release. Consider `x.mT` to transpose batches of matrices or `x.permute(*torch.arange(x.ndim - 1, -1, -1))` to reverse the dimensions of a tensor. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4416.)
+  R = (R_tensor.T * week_one_hot).sum()
