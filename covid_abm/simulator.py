@@ -9,6 +9,10 @@ def get_registry():
     from .substeps.seirm_progression.transition import SEIRMProgression
 
     reg.register(MakeIsolationDecision, "make_isolation_decision", key="policy")
+
+    # 1) handles agents transmitting disease
+    # 2) handles disease state of exposed agent
+    # both are transitions because they update the state of an agent
     reg.register(NewTransmission, "new_transmission", key="transition")
     reg.register(SEIRMProgression, "seirm_progression", key="transition")
 
@@ -21,9 +25,15 @@ def get_registry():
         get_next_stage_time,
         load_population_attribute,
         initialize_id,
+        initialize_protein_vector,
     )
 
     reg.register(network_from_file, "network_from_file", key="network")
+
+    # initializes each agent with a zero vector for their covid genome vector
+    reg.register(
+        initialize_protein_vector, "initialize_protein_vectors", key="initialization"
+    )
     reg.register(read_from_file, "read_from_file", key="initialization")
     reg.register(
         get_lam_gamma_integrals, "get_lam_gamma_integrals", key="initialization"

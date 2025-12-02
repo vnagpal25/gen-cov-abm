@@ -147,6 +147,20 @@ state:
           - ${state.agents.citizens.number}
           - 1
           value: 0
+        protein_features:
+          dtype: float
+          initialization_function:
+            arguments:
+              feature_dim:
+                value: 1280  # protein vector dimension
+              num_agents:
+                value: ${state.agents.citizens.number}
+            generator: initialize_custom_features
+          learnable: false
+          name: Protein feature vector for each agent (ORF1a)
+          shape:
+          - ${state.agents.citizens.number}
+          - 1280  # Feature dimension
   environment:
     SFInfector:
       dtype: float
@@ -252,6 +266,7 @@ state:
         type: network_from_file
   objects: null
 substeps:
+  # Disease Transmission Substep
   '0':
     active_agents:
     - citizens
@@ -317,11 +332,13 @@ substeps:
           lam_gamma_integrals: environment/lam_gamma_integrals
           mean_interactions: environment/mean_interactions
           next_stage_time: agents/citizens/next_stage_time
+          protein_features: agents/citizens/protein_features
         output_variables:
         - disease_stage
         - next_stage_time
         - infected_time
         - daily_infected
+  # Disease Progression Substep
   '1':
     active_agents:
     - citizens
