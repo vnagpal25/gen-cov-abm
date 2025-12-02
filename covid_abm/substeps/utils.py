@@ -152,3 +152,20 @@ def network_from_file(params):
     # A = torch.tensor(nx.adjacency_matrix(G).todense())
 
     return G, (all_edgelist, all_edgeattr)
+
+
+def initialize_protein_vector(shape, params):
+    """
+    Initialize protein vector for each agent.
+    
+    All agents start with zero vectors. At t=0, NewTransmission substep
+    loads county-specific genome embeddings and assign them to initially
+    infected agents, while non-infected agents retain their zero vectors.
+    """
+    num_agents, feature_dim = shape
+    
+    # initialize everyone as a zero vector
+    # at t=0, infected agents will receive county-specific genome embeddings
+    genome_features = torch.zeros(num_agents, feature_dim)
+
+    return genome_features

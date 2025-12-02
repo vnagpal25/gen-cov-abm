@@ -4,6 +4,7 @@ import re
 
 from AgentTorch.agent_torch.core.substep import SubstepTransition
 from AgentTorch.agent_torch.core.helpers import get_by_path
+from ..genome_mlps import ProgressMLP
 
 
 class SEIRMProgression(SubstepTransition):
@@ -23,7 +24,7 @@ class SEIRMProgression(SubstepTransition):
         self.STAGE_SAME_VAR = 0
         self.STAGE_UPDATE_VAR = 1
 
-        self.calibration_mode = self.config['simulation_metadata']['calibration']
+        self.calibration_mode = self.config["simulation_metadata"]["calibration"]
 
         self.INFINITY_TIME = (
             self.config["simulation_metadata"]["num_steps_per_episode"] + 20
@@ -31,6 +32,37 @@ class SEIRMProgression(SubstepTransition):
         self.INFECTED_TO_RECOVERED_TIME = self.config["simulation_metadata"][
             "INFECTED_TO_RECOVERED_TIME"
         ]
+
+        self.genome_mlp = ProgressMLP(input_dim=1280, hidden_dim=512, output_dim=1).to(
+            self.device
+        )
+
+    def _compute_genome_modifier(self, protein_features):
+        """
+        Compute genome progression modifier using MLP.
+        Agents with zero vectors (no genomic info) get a default modifier of 1.0.
+
+        protein_features: tensor of shape (num_agents, embedding_dim)
+        Returns: tensor of shape (num_agents, 1) with modifiers
+        """
+        # check which agents have zero vectors (no genomic information)
+        # sum across embedding dimension; zero vectors will have sum = 0
+        has_genomic_info = (protein_features.abs().sum(dim=1) > 0).float()
+
+        # initialize all modifiers to 1.0 (no modification)
+        genome_modifier = torch.ones(
+            protein_features.shape[0], 1, device=self.device
+        )
+
+        # Only run MLP for agents with genomic information
+        agents_with_info = has_genomic_info > 0
+
+        if agents_with_info.any():
+            mlp_output = self.genome_mlp(protein_features[agents_with_info])
+            # Assign output to corresponding positions
+            genome_modifier[agents_with_info] = mlp_output
+
+        return genome_modifier
 
     def _generate_one_hot_tensor(self, timestep, num_timesteps):
         one_hot_tensor = F.one_hot(torch.tensor(timestep), num_classes=num_timesteps)
@@ -49,7 +81,9 @@ class SEIRMProgression(SubstepTransition):
         )
 
         if self.calibration_mode:
-            num_dead_today = new_death_recovered_today.sum() * self.calibrate_M.to(self.device)
+            num_dead_today = new_death_recovered_today.sum() * self.calibrate_M.to(
+                self.device
+            )
         else:
             num_dead_today = new_death_recovered_today.sum() * self.learnable_args["M"]
 
@@ -62,12 +96,12 @@ class SEIRMProgression(SubstepTransition):
                 dead_indices = candidate_indices[
                     torch.randperm(len(candidate_indices))[:num_deaths]
                 ]
-                
+
             else:
                 dead_indices = candidate_indices
-            
+
             # Update stages for dead agents
-            current_stages[dead_indices] = self.MORTALITY_VAR            
+            current_stages[dead_indices] = self.MORTALITY_VAR
             # Update stages for recovered agents (those not selected to die)
             recovered_indices = candidate_indices[
                 ~torch.isin(candidate_indices, dead_indices)
@@ -80,7 +114,6 @@ class SEIRMProgression(SubstepTransition):
             + self._generate_one_hot_tensor(t, self.num_timesteps) * num_dead_today[0]
         )
         return current_stages, daily_dead
-
 
     def update_current_stages(self, t, current_stages, current_transition_times):
         transit_agents = (current_transition_times <= t) * self.STAGE_UPDATE_VAR
@@ -114,21 +147,42 @@ class SEIRMProgression(SubstepTransition):
         input_variables = self.input_variables
         t = state["current_step"]
 
-        current_stages = state['agents']['citizens']['disease_stage']
-        agents_next_stage_times = state['agents']['citizens']['next_stage_time']
-        daily_deaths = state['environment']['daily_deaths']
+        current_stages = state["agents"]["citizens"]["disease_stage"]
+        agents_next_stage_times = state["agents"]["citizens"]["next_stage_time"]
+        daily_deaths = state["environment"]["daily_deaths"]
+        protein_features = state["agents"]["citizens"]["protein_features"]
 
+        # Compute genome progression modifier using MLP
+        # (skips agents with zero vectors)
+        genome_modifier = self._compute_genome_modifier(protein_features)
+
+        # speed up progression as necessary by genome
+        # TODO modifier always less than 1 so will always speed up the
+        # infection
+        # scale to [0, 2] perhaps 0 < x < 1 -> speed up
+        #                         1 < x < 2 -> slow down
+        genome_adjusted_next_stage_times = agents_next_stage_times * genome_modifier
+
+        # new_stages = self.update_current_stages(
+        #     t, current_stages, agents_next_stage_times
+        # )
         new_stages = self.update_current_stages(
-            t, current_stages, agents_next_stage_times
+            t, current_stages, genome_adjusted_next_stage_times
         )
+
+        # new_transition_times = self.update_next_transition_times(
+        #     t, current_stages, agents_next_stage_times
+        # )
         new_transition_times = self.update_next_transition_times(
-            t, current_stages, agents_next_stage_times
+            t, current_stages, genome_adjusted_next_stage_times
         )
 
+        # new_stages, new_daily_deaths = self.update_daily_deaths(
+        #     t, daily_deaths, current_stages, agents_next_stage_times
+        # )
         new_stages, new_daily_deaths = self.update_daily_deaths(
-            t, daily_deaths, current_stages, agents_next_stage_times
+            t, daily_deaths, current_stages, genome_adjusted_next_stage_times
         )
-
         return {
             self.output_variables[0]: new_stages,
             self.output_variables[1]: new_transition_times,
