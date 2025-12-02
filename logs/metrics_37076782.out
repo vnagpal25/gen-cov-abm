@@ -1,0 +1,1239 @@
+Requirement already satisfied: pip in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (25.3)
+Collecting omegaconf>=2.3.0 (from -r requirements.txt (line 1))
+  Downloading omegaconf-2.3.0-py3-none-any.whl.metadata (3.9 kB)
+Collecting asyncio>=3.4.3 (from -r requirements.txt (line 2))
+  Downloading asyncio-4.0.0-py3-none-any.whl.metadata (994 bytes)
+Requirement already satisfied: torch>=2.1.2 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 3)) (2.9.1)
+Collecting torch_geometric>=2.5.3 (from -r requirements.txt (line 4))
+  Downloading torch_geometric-2.7.0-py3-none-any.whl.metadata (63 kB)
+Collecting langchain>=0.2.3 (from -r requirements.txt (line 5))
+  Downloading langchain-1.1.0-py3-none-any.whl.metadata (4.9 kB)
+Collecting langchain-openai>=0.1.8 (from -r requirements.txt (line 6))
+  Downloading langchain_openai-1.1.0-py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: numpy>=1.24.3 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 7)) (2.2.6)
+Collecting pandas>=1.5.0 (from -r requirements.txt (line 8))
+  Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+Collecting networkx>=3.0 (from -r requirements.txt (line 9))
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting tqdm>=4.66.4 (from -r requirements.txt (line 10))
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting dspy>=0.1.5 (from -r requirements.txt (line 11))
+  Downloading dspy-3.0.4-py3-none-any.whl.metadata (8.4 kB)
+Collecting dask>=2024.12.1 (from -r requirements.txt (line 12))
+  Downloading dask-2025.11.0-py3-none-any.whl.metadata (3.8 kB)
+Collecting epiweeks (from -r requirements.txt (line 13))
+  Downloading epiweeks-2.3.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting scipy (from -r requirements.txt (line 14))
+  Downloading scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Requirement already satisfied: fair-esm>=2.0.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 15)) (2.0.0)
+Requirement already satisfied: ipykernel>=7.1.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 16)) (7.1.0)
+Collecting jinja2>=3.1.6 (from -r requirements.txt (line 17))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Requirement already satisfied: matplotlib>=3.10.7 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 18)) (3.10.7)
+Requirement already satisfied: nexusformat>=2.0.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 19)) (2.0.0)
+Requirement already satisfied: scikit-learn>=1.3.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 21)) (1.7.2)
+Requirement already satisfied: seaborn>=0.13.2 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 22)) (0.13.2)
+Requirement already satisfied: toytree>=3.0.10 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 24)) (3.0.11)
+Requirement already satisfied: wandb>=0.18.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 26)) (0.23.0)
+Requirement already satisfied: asdf in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from -r requirements.txt (line 27)) (5.1.0)
+Collecting antlr4-python3-runtime==4.9.* (from omegaconf>=2.3.0->-r requirements.txt (line 1))
+  Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting PyYAML>=5.1.0 (from omegaconf>=2.3.0->-r requirements.txt (line 1))
+  Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Requirement already satisfied: filelock in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (3.20.0)
+Collecting typing-extensions>=4.10.0 (from torch>=2.1.2->-r requirements.txt (line 3))
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting sympy>=1.13.3 (from torch>=2.1.2->-r requirements.txt (line 3))
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting fsspec>=0.8.5 (from torch>=2.1.2->-r requirements.txt (line 3))
+  Downloading fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (12.8.93)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (12.8.90)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (12.8.90)
+Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (9.10.2.21)
+Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (12.8.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (11.3.3.83)
+Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (10.3.9.90)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (11.7.3.90)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (12.5.8.93)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (0.7.1)
+Requirement already satisfied: nvidia-nccl-cu12==2.27.5 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (2.27.5)
+Requirement already satisfied: nvidia-nvshmem-cu12==3.3.20 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (3.3.20)
+Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (12.8.90)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (12.8.93)
+Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (1.13.1.3)
+Requirement already satisfied: triton==3.5.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch>=2.1.2->-r requirements.txt (line 3)) (3.5.1)
+Collecting aiohttp (from torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading aiohttp-3.13.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Collecting psutil>=5.8.0 (from torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading psutil-7.1.3-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (23 kB)
+Requirement already satisfied: pyparsing in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from torch_geometric>=2.5.3->-r requirements.txt (line 4)) (3.2.5)
+Collecting requests (from torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting xxhash (from torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading xxhash-3.6.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting langchain-core<2.0.0,>=1.1.0 (from langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading langchain_core-1.1.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting langgraph<1.1.0,>=1.0.2 (from langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading langgraph-1.0.4-py3-none-any.whl.metadata (7.8 kB)
+Collecting pydantic<3.0.0,>=2.7.4 (from langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting jsonpatch<2.0.0,>=1.33.0 (from langchain-core<2.0.0,>=1.1.0->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)
+Collecting langsmith<1.0.0,>=0.3.45 (from langchain-core<2.0.0,>=1.1.0->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading langsmith-0.4.49-py3-none-any.whl.metadata (14 kB)
+Collecting packaging<26.0.0,>=23.2.0 (from langchain-core<2.0.0,>=1.1.0->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting tenacity!=8.4.0,<10.0.0,>=8.1.0 (from langchain-core<2.0.0,>=1.1.0->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading tenacity-9.1.2-py3-none-any.whl.metadata (1.2 kB)
+Collecting jsonpointer>=1.9 (from jsonpatch<2.0.0,>=1.33.0->langchain-core<2.0.0,>=1.1.0->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading jsonpointer-3.0.0-py2.py3-none-any.whl.metadata (2.3 kB)
+Collecting langgraph-checkpoint<4.0.0,>=2.1.0 (from langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading langgraph_checkpoint-3.0.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting langgraph-prebuilt<1.1.0,>=1.0.2 (from langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading langgraph_prebuilt-1.0.5-py3-none-any.whl.metadata (5.2 kB)
+Collecting langgraph-sdk<0.3.0,>=0.2.2 (from langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading langgraph_sdk-0.2.10-py3-none-any.whl.metadata (1.6 kB)
+Collecting ormsgpack>=1.12.0 (from langgraph-checkpoint<4.0.0,>=2.1.0->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading ormsgpack-1.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.2 kB)
+Collecting httpx>=0.25.2 (from langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting orjson>=3.10.1 (from langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading orjson-3.11.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+Collecting requests-toolbelt>=1.0.0 (from langsmith<1.0.0,>=0.3.45->langchain-core<2.0.0,>=1.1.0->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+Collecting zstandard>=0.23.0 (from langsmith<1.0.0,>=0.3.45->langchain-core<2.0.0,>=1.1.0->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading zstandard-0.25.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.3 kB)
+Collecting anyio (from httpx>=0.25.2->langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading anyio-4.12.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting certifi (from httpx>=0.25.2->langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx>=0.25.2->langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx>=0.25.2->langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx>=0.25.2->langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.7.4->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic<3.0.0,>=2.7.4->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading pydantic_core-2.41.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic<3.0.0,>=2.7.4->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting openai<3.0.0,>=1.109.1 (from langchain-openai>=0.1.8->-r requirements.txt (line 6))
+  Downloading openai-2.8.1-py3-none-any.whl.metadata (29 kB)
+Collecting tiktoken<1.0.0,>=0.7.0 (from langchain-openai>=0.1.8->-r requirements.txt (line 6))
+  Downloading tiktoken-0.12.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+Collecting distro<2,>=1.7.0 (from openai<3.0.0,>=1.109.1->langchain-openai>=0.1.8->-r requirements.txt (line 6))
+  Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting jiter<1,>=0.10.0 (from openai<3.0.0,>=1.109.1->langchain-openai>=0.1.8->-r requirements.txt (line 6))
+  Downloading jiter-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting sniffio (from openai<3.0.0,>=1.109.1->langchain-openai>=0.1.8->-r requirements.txt (line 6))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting exceptiongroup>=1.0.2 (from anyio->httpx>=0.25.2->langgraph-sdk<0.3.0,>=0.2.2->langgraph<1.1.0,>=1.0.2->langchain>=0.2.3->-r requirements.txt (line 5))
+  Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+Collecting regex>=2022.1.18 (from tiktoken<1.0.0,>=0.7.0->langchain-openai>=0.1.8->-r requirements.txt (line 6))
+  Downloading regex-2025.11.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting python-dateutil>=2.8.2 (from pandas>=1.5.0->-r requirements.txt (line 8))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas>=1.5.0->-r requirements.txt (line 8))
+  Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas>=1.5.0->-r requirements.txt (line 8))
+  Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting backoff>=2.2 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading backoff-2.2.1-py3-none-any.whl.metadata (14 kB)
+Collecting joblib~=1.3 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading joblib-1.5.2-py3-none-any.whl.metadata (5.6 kB)
+Collecting optuna>=3.4.0 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading optuna-4.6.0-py3-none-any.whl.metadata (17 kB)
+Collecting magicattr>=0.1.6 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading magicattr-0.1.6-py2.py3-none-any.whl.metadata (3.2 kB)
+Collecting litellm>=1.64.0 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading litellm-1.80.7-py3-none-any.whl.metadata (30 kB)
+Collecting diskcache>=5.6.0 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading diskcache-5.6.3-py3-none-any.whl.metadata (20 kB)
+Collecting json-repair>=0.30.0 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading json_repair-0.54.2-py3-none-any.whl.metadata (12 kB)
+Collecting asyncer==0.0.8 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading asyncer-0.0.8-py3-none-any.whl.metadata (6.7 kB)
+Collecting cachetools>=5.5.0 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading cachetools-6.2.2-py3-none-any.whl.metadata (5.6 kB)
+Collecting cloudpickle>=3.0.0 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting rich>=13.7.1 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading rich-14.2.0-py3-none-any.whl.metadata (18 kB)
+Collecting pillow>=10.1.0 (from dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading pillow-12.0.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting gepa==0.0.17 (from gepa[dspy]==0.0.17->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading gepa-0.0.17-py3-none-any.whl.metadata (26 kB)
+Collecting click>=8.1 (from dask>=2024.12.1->-r requirements.txt (line 12))
+  Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting partd>=1.4.0 (from dask>=2024.12.1->-r requirements.txt (line 12))
+  Downloading partd-1.4.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting toolz>=0.10.0 (from dask>=2024.12.1->-r requirements.txt (line 12))
+  Downloading toolz-1.1.0-py3-none-any.whl.metadata (5.1 kB)
+Collecting importlib_metadata>=4.13.0 (from dask>=2024.12.1->-r requirements.txt (line 12))
+  Downloading importlib_metadata-8.7.0-py3-none-any.whl.metadata (4.8 kB)
+Requirement already satisfied: comm>=0.1.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.2.3)
+Requirement already satisfied: debugpy>=1.6.5 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (1.8.17)
+Requirement already satisfied: ipython>=7.23.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (8.37.0)
+Requirement already satisfied: jupyter-client>=8.0.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (8.6.3)
+Requirement already satisfied: jupyter-core!=5.0.*,>=4.12 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (5.9.1)
+Requirement already satisfied: matplotlib-inline>=0.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.2.1)
+Requirement already satisfied: nest-asyncio>=1.4 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (1.6.0)
+Requirement already satisfied: pyzmq>=25 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (27.1.0)
+Requirement already satisfied: tornado>=6.2 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (6.5.2)
+Requirement already satisfied: traitlets>=5.4.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipykernel>=7.1.0->-r requirements.txt (line 16)) (5.14.3)
+Collecting MarkupSafe>=2.0 (from jinja2>=3.1.6->-r requirements.txt (line 17))
+  Downloading markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Requirement already satisfied: contourpy>=1.0.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from matplotlib>=3.10.7->-r requirements.txt (line 18)) (1.3.2)
+Requirement already satisfied: cycler>=0.10 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from matplotlib>=3.10.7->-r requirements.txt (line 18)) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from matplotlib>=3.10.7->-r requirements.txt (line 18)) (4.61.0)
+Requirement already satisfied: kiwisolver>=1.3.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from matplotlib>=3.10.7->-r requirements.txt (line 18)) (1.4.9)
+Requirement already satisfied: colored in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from nexusformat>=2.0.0->-r requirements.txt (line 19)) (2.3.1)
+Requirement already satisfied: h5py in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from nexusformat>=2.0.0->-r requirements.txt (line 19)) (3.15.1)
+Requirement already satisfied: hdf5plugin in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from nexusformat>=2.0.0->-r requirements.txt (line 19)) (6.0.0)
+Collecting pygments (from nexusformat>=2.0.0->-r requirements.txt (line 19))
+  Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+Requirement already satisfied: threadpoolctl>=3.1.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from scikit-learn>=1.3.0->-r requirements.txt (line 21)) (3.6.0)
+Requirement already satisfied: loguru in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from toytree>=3.0.10->-r requirements.txt (line 24)) (0.7.3)
+Requirement already satisfied: toyplot in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from toytree>=3.0.10->-r requirements.txt (line 24)) (2.0.0)
+Requirement already satisfied: gitpython!=3.1.29,>=1.0.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from wandb>=0.18.0->-r requirements.txt (line 26)) (3.1.45)
+Requirement already satisfied: platformdirs in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from wandb>=0.18.0->-r requirements.txt (line 26)) (4.5.0)
+Requirement already satisfied: protobuf!=4.21.0,!=5.28.0,<7,>=3.19.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from wandb>=0.18.0->-r requirements.txt (line 26)) (6.33.1)
+Requirement already satisfied: sentry-sdk>=2.0.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from wandb>=0.18.0->-r requirements.txt (line 26)) (2.46.0)
+Collecting charset_normalizer<4,>=2 (from requests->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+Requirement already satisfied: asdf-standard>=1.1.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from asdf->-r requirements.txt (line 27)) (1.4.0)
+Requirement already satisfied: asdf-transform-schemas>=0.3 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from asdf->-r requirements.txt (line 27)) (0.6.0)
+Requirement already satisfied: jmespath>=0.6.2 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from asdf->-r requirements.txt (line 27)) (1.0.1)
+Requirement already satisfied: semantic_version>=2.8 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from asdf->-r requirements.txt (line 27)) (2.10.0)
+Collecting attrs>=22.2.0 (from asdf->-r requirements.txt (line 27))
+  Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from gitpython!=3.1.29,>=1.0.0->wandb>=0.18.0->-r requirements.txt (line 26)) (4.0.12)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->gitpython!=3.1.29,>=1.0.0->wandb>=0.18.0->-r requirements.txt (line 26)) (5.0.2)
+Collecting zipp>=3.20 (from importlib_metadata>=4.13.0->dask>=2024.12.1->-r requirements.txt (line 12))
+  Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+Requirement already satisfied: decorator in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (5.2.1)
+Requirement already satisfied: jedi>=0.16 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.19.2)
+Requirement already satisfied: pexpect>4.3 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (4.9.0)
+Requirement already satisfied: prompt_toolkit<3.1.0,>=3.0.41 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (3.0.52)
+Requirement already satisfied: stack_data in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.6.3)
+Requirement already satisfied: wcwidth in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.2.14)
+Requirement already satisfied: parso<0.9.0,>=0.8.4 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from jedi>=0.16->ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.8.5)
+Collecting fastuuid>=0.13.0 (from litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading fastuuid-0.14.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.1 kB)
+Collecting grpcio<1.68.0,>=1.62.3 (from litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading grpcio-1.67.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.9 kB)
+Collecting jsonschema<5.0.0,>=4.22.0 (from litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting python-dotenv>=0.2.0 (from litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading python_dotenv-1.2.1-py3-none-any.whl.metadata (25 kB)
+Collecting tokenizers (from litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading tokenizers-0.22.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema<5.0.0,>=4.22.0->litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema<5.0.0,>=4.22.0->litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.7.1 (from jsonschema<5.0.0,>=4.22.0->litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading rpds_py-0.30.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading frozenlist-1.8.0-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading multidict-6.7.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+Collecting propcache>=0.2.0 (from aiohttp->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading propcache-0.4.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->torch_geometric>=2.5.3->-r requirements.txt (line 4))
+  Downloading yarl-1.22.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (75 kB)
+Collecting alembic>=1.5.0 (from optuna>=3.4.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading alembic-1.17.2-py3-none-any.whl.metadata (7.2 kB)
+Collecting colorlog (from optuna>=3.4.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading colorlog-6.10.1-py3-none-any.whl.metadata (11 kB)
+Collecting sqlalchemy>=1.4.2 (from optuna>=3.4.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading sqlalchemy-2.0.44-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.5 kB)
+Collecting Mako (from alembic>=1.5.0->optuna>=3.4.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading mako-1.3.10-py3-none-any.whl.metadata (2.9 kB)
+Requirement already satisfied: tomli in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from alembic>=1.5.0->optuna>=3.4.0->dspy>=0.1.5->-r requirements.txt (line 11)) (2.3.0)
+Collecting locket (from partd>=1.4.0->dask>=2024.12.1->-r requirements.txt (line 12))
+  Downloading locket-1.0.0-py2.py3-none-any.whl.metadata (2.8 kB)
+Requirement already satisfied: ptyprocess>=0.5 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from pexpect>4.3->ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.7.0)
+Requirement already satisfied: six>=1.5 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas>=1.5.0->-r requirements.txt (line 8)) (1.17.0)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.7.1->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.7.1->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting greenlet>=1 (from sqlalchemy>=1.4.2->optuna>=3.4.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch>=2.1.2->-r requirements.txt (line 3))
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: executing>=1.2.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from stack_data->ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (2.2.1)
+Requirement already satisfied: asttokens>=2.1.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from stack_data->ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (3.0.1)
+Requirement already satisfied: pure-eval in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from stack_data->ipython>=7.23.1->ipykernel>=7.1.0->-r requirements.txt (line 16)) (0.2.3)
+Collecting huggingface-hub<2.0,>=0.16.4 (from tokenizers->litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading huggingface_hub-1.1.7-py3-none-any.whl.metadata (13 kB)
+Collecting hf-xet<2.0.0,>=1.2.0 (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading hf_xet-1.2.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting shellingham (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting typer-slim (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm>=1.64.0->dspy>=0.1.5->-r requirements.txt (line 11))
+  Downloading typer_slim-0.20.0-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: arrow>=1.0 in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from toyplot->toytree>=3.0.10->-r requirements.txt (line 24)) (1.4.0)
+Requirement already satisfied: custom_inherit in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from toyplot->toytree>=3.0.10->-r requirements.txt (line 24)) (2.4.1)
+Requirement already satisfied: multipledispatch in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from toyplot->toytree>=3.0.10->-r requirements.txt (line 24)) (1.0.0)
+Requirement already satisfied: pypng in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from toyplot->toytree>=3.0.10->-r requirements.txt (line 24)) (0.20220715.0)
+Requirement already satisfied: reportlab in /home/namishah/miniconda3/envs/covid_clean/lib/python3.10/site-packages (from toyplot->toytree>=3.0.10->-r requirements.txt (line 24)) (4.4.5)
+Downloading omegaconf-2.3.0-py3-none-any.whl (79 kB)
+Downloading asyncio-4.0.0-py3-none-any.whl (5.6 kB)
+Downloading torch_geometric-2.7.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 18.7 MB/s  0:00:00
+Downloading langchain-1.1.0-py3-none-any.whl (101 kB)
+Downloading langchain_core-1.1.0-py3-none-any.whl (473 kB)
+Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
+Downloading langgraph-1.0.4-py3-none-any.whl (157 kB)
+Downloading langgraph_checkpoint-3.0.1-py3-none-any.whl (46 kB)
+Downloading langgraph_prebuilt-1.0.5-py3-none-any.whl (35 kB)
+Downloading langgraph_sdk-0.2.10-py3-none-any.whl (58 kB)
+Downloading langsmith-0.4.49-py3-none-any.whl (410 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading packaging-25.0-py3-none-any.whl (66 kB)
+Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+Downloading pydantic_core-2.41.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 37.3 MB/s  0:00:00
+Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 770.3/770.3 kB 24.6 MB/s  0:00:00
+Downloading tenacity-9.1.2-py3-none-any.whl (28 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading langchain_openai-1.1.0-py3-none-any.whl (84 kB)
+Downloading openai-2.8.1-py3-none-any.whl (1.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 28.6 MB/s  0:00:00
+Downloading anyio-4.12.0-py3-none-any.whl (113 kB)
+Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+Downloading jiter-0.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (364 kB)
+Downloading tiktoken-0.12.0-cp310-cp310-manylinux_2_28_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 33.4 MB/s  0:00:00
+Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 67.4 MB/s  0:00:00
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 42.8 MB/s  0:00:00
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+Downloading dspy-3.0.4-py3-none-any.whl (285 kB)
+Downloading asyncer-0.0.8-py3-none-any.whl (9.2 kB)
+Downloading gepa-0.0.17-py3-none-any.whl (110 kB)
+Downloading joblib-1.5.2-py3-none-any.whl (308 kB)
+Downloading dask-2025.11.0-py3-none-any.whl (1.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 41.8 MB/s  0:00:00
+Downloading epiweeks-2.3.0-py3-none-any.whl (5.7 kB)
+Downloading scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (37.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.7/37.7 MB 67.1 MB/s  0:00:00
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+Downloading backoff-2.2.1-py3-none-any.whl (15 kB)
+Downloading cachetools-6.2.2-py3-none-any.whl (11 kB)
+Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+Downloading click-8.3.1-py3-none-any.whl (108 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading diskcache-5.6.3-py3-none-any.whl (45 kB)
+Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+Downloading fsspec-2025.10.0-py3-none-any.whl (200 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading importlib_metadata-8.7.0-py3-none-any.whl (27 kB)
+Downloading json_repair-0.54.2-py3-none-any.whl (29 kB)
+Downloading jsonpointer-3.0.0-py2.py3-none-any.whl (7.6 kB)
+Downloading litellm-1.80.7-py3-none-any.whl (10.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 68.7 MB/s  0:00:00
+Downloading grpcio-1.67.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.9/5.9 MB 46.2 MB/s  0:00:00
+Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+Downloading aiohttp-3.13.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 42.2 MB/s  0:00:00
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading multidict-6.7.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (241 kB)
+Downloading yarl-1.22.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (346 kB)
+Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading fastuuid-0.14.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (280 kB)
+Downloading frozenlist-1.8.0-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (219 kB)
+Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading magicattr-0.1.6-py2.py3-none-any.whl (4.7 kB)
+Downloading markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)
+Downloading optuna-4.6.0-py3-none-any.whl (404 kB)
+Downloading alembic-1.17.2-py3-none-any.whl (248 kB)
+Downloading orjson-3.11.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (136 kB)
+Downloading ormsgpack-1.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (207 kB)
+Downloading partd-1.4.2-py3-none-any.whl (18 kB)
+Downloading pillow-12.0.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 52.1 MB/s  0:00:00
+Downloading propcache-0.4.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (196 kB)
+Downloading psutil-7.1.3-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (263 kB)
+Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 35.7 MB/s  0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading regex-2025.11.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (791 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 791.7/791.7 kB 25.5 MB/s  0:00:00
+Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+Downloading rich-14.2.0-py3-none-any.whl (243 kB)
+Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading rpds_py-0.30.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (390 kB)
+Downloading sqlalchemy-2.0.44-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 55.6 MB/s  0:00:00
+Downloading greenlet-3.2.4-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (584 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 584.4/584.4 kB 17.7 MB/s  0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 59.7 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 15.2 MB/s  0:00:00
+Downloading toolz-1.1.0-py3-none-any.whl (58 kB)
+Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+Downloading xxhash-3.6.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (193 kB)
+Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+Downloading zstandard-0.25.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 52.7 MB/s  0:00:00
+Downloading colorlog-6.10.1-py3-none-any.whl (11 kB)
+Downloading locket-1.0.0-py2.py3-none-any.whl (4.4 kB)
+Downloading mako-1.3.10-py3-none-any.whl (78 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading tokenizers-0.22.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 45.0 MB/s  0:00:00
+Downloading huggingface_hub-1.1.7-py3-none-any.whl (516 kB)
+Downloading hf_xet-1.2.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 54.0 MB/s  0:00:00
+Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Downloading typer_slim-0.20.0-py3-none-any.whl (47 kB)
+Building wheels for collected packages: antlr4-python3-runtime
+  Building wheel for antlr4-python3-runtime (pyproject.toml): started
+  Building wheel for antlr4-python3-runtime (pyproject.toml): finished with status 'done'
+  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144591 sha256=3f7512b5b60cdfde2233e16e5ff71b21d772fad7cafb5815d7cc47e39daec648
+  Stored in directory: /home/namishah/.cache/pip/wheels/12/93/dd/1f6a127edc45659556564c5730f6d4e300888f4bca2d4c5a88
+Successfully built antlr4-python3-runtime
+Installing collected packages: pytz, mpmath, magicattr, antlr4-python3-runtime, zstandard, zipp, xxhash, urllib3, tzdata, typing-extensions, tqdm, toolz, tenacity, sympy, sniffio, shellingham, scipy, rpds-py, regex, PyYAML, python-dotenv, python-dateutil, pygments, psutil, propcache, pillow, packaging, ormsgpack, orjson, networkx, mdurl, MarkupSafe, locket, jsonpointer, json-repair, joblib, jiter, idna, hf-xet, h11, grpcio, greenlet, gepa, fsspec, frozenlist, fastuuid, epiweeks, distro, diskcache, colorlog, cloudpickle, click, charset_normalizer, certifi, cachetools, backoff, attrs, asyncio, async-timeout, annotated-types, aiohappyeyeballs, typing-inspection, typer-slim, sqlalchemy, requests, referencing, pydantic-core, partd, pandas, omegaconf, multidict, markdown-it-py, Mako, jsonpatch, jinja2, importlib_metadata, httpcore, exceptiongroup, aiosignal, yarl, tiktoken, rich, requests-toolbelt, pydantic, jsonschema-specifications, dask, anyio, alembic, optuna, jsonschema, httpx, asyncer, aiohttp, torch_geometric, openai, langsmith, langgraph-sdk, huggingface-hub, tokenizers, langchain-core, litellm, langgraph-checkpoint, langchain-openai, langgraph-prebuilt, dspy, langgraph, langchain
+
+Successfully installed Mako-1.3.10 MarkupSafe-3.0.3 PyYAML-6.0.3 aiohappyeyeballs-2.6.1 aiohttp-3.13.2 aiosignal-1.4.0 alembic-1.17.2 annotated-types-0.7.0 antlr4-python3-runtime-4.9.3 anyio-4.12.0 async-timeout-5.0.1 asyncer-0.0.8 asyncio-4.0.0 attrs-25.4.0 backoff-2.2.1 cachetools-6.2.2 certifi-2025.11.12 charset_normalizer-3.4.4 click-8.3.1 cloudpickle-3.1.2 colorlog-6.10.1 dask-2025.11.0 diskcache-5.6.3 distro-1.9.0 dspy-3.0.4 epiweeks-2.3.0 exceptiongroup-1.3.1 fastuuid-0.14.0 frozenlist-1.8.0 fsspec-2025.10.0 gepa-0.0.17 greenlet-3.2.4 grpcio-1.67.1 h11-0.16.0 hf-xet-1.2.0 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-1.1.7 idna-3.11 importlib_metadata-8.7.0 jinja2-3.1.6 jiter-0.12.0 joblib-1.5.2 json-repair-0.54.2 jsonpatch-1.33 jsonpointer-3.0.0 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 langchain-1.1.0 langchain-core-1.1.0 langchain-openai-1.1.0 langgraph-1.0.4 langgraph-checkpoint-3.0.1 langgraph-prebuilt-1.0.5 langgraph-sdk-0.2.10 langsmith-0.4.49 litellm-1.80.7 locket-1.0.0 magicattr-0.1.6 markdown-it-py-4.0.0 mdurl-0.1.2 mpmath-1.3.0 multidict-6.7.0 networkx-3.4.2 omegaconf-2.3.0 openai-2.8.1 optuna-4.6.0 orjson-3.11.4 ormsgpack-1.12.0 packaging-25.0 pandas-2.3.3 partd-1.4.2 pillow-12.0.0 propcache-0.4.1 psutil-7.1.3 pydantic-2.12.5 pydantic-core-2.41.5 pygments-2.19.2 python-dateutil-2.9.0.post0 python-dotenv-1.2.1 pytz-2025.2 referencing-0.37.0 regex-2025.11.3 requests-2.32.5 requests-toolbelt-1.0.0 rich-14.2.0 rpds-py-0.30.0 scipy-1.15.3 shellingham-1.5.4 sniffio-1.3.1 sqlalchemy-2.0.44 sympy-1.14.0 tenacity-9.1.2 tiktoken-0.12.0 tokenizers-0.22.1 toolz-1.1.0 torch_geometric-2.7.0 tqdm-4.67.1 typer-slim-0.20.0 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2025.2 urllib3-2.5.0 xxhash-3.6.0 yarl-1.22.0 zipp-3.23.0 zstandard-0.25.0
+[OK] County 25001, window 202027-202031: ND=6.3793, RMSE=211.7895, MAE=42.2857
+[OK] County 25001, window 202031-202035: ND=10.6639, RMSE=200.7091, MAE=37.1714
+[OK] County 25003, window 202027-202031: ND=33.5672, RMSE=369.3411, MAE=64.2571
+[OK] County 25003, window 202031-202035: ND=40.7925, RMSE=357.0030, MAE=61.7714
+[OK] County 25005, window 202027-202031: ND=3.1281, RMSE=362.5682, MAE=89.2857
+[OK] County 25005, window 202031-202035: ND=3.1261, RMSE=304.7171, MAE=73.6857
+[OK] County 25009, window 202027-202031: ND=1.9459, RMSE=234.6724, MAE=78.1714
+[OK] County 25009, window 202031-202035: ND=1.7354, RMSE=252.2279, MAE=87.3143
+[OK] County 25013, window 202027-202031: ND=3.9889, RMSE=368.4796, MAE=82.4000
+[OK] County 25013, window 202031-202035: ND=4.3074, RMSE=350.3921, MAE=76.0571
+[ERR] County 25015, window 202027-202031 failed: Command failed (exit 1).
+STDOUT:
+
+================= DEBUG CONFIG =================
+Loaded from: /tmp/covid_config_zhkr902r.yaml
+simulation_metadata:
+  ALIGN_LLM: true
+  EXECUTION_MODE: heuristic
+  EXPOSED_TO_INFECTED_TIME: 5
+  EXPOSED_VAR: 1
+  INCLUDE_WEEK_COUNT: true
+  INFECTED_TO_RECOVERED_TIME: 5
+  INFECTED_VAR: 2
+  INFINITY_TIME: 130
+  INITIAL_INFECTION_RATE: 0.04
+  MORTALITY_VAR: 4
+  NEIGHBORHOOD: Astoria
+  NUM_TRAIN_WEEKS: 2
+  NUM_WEEKS: 5
+  OPENAI_API_KEY: None
+  RECOVERED_TO_SUSCEPTIBLE_TIME: 100
+  RECOVERED_VAR: 3
+  RESCALE_CONFIG: 0
+  START_WEEK: 202048
+  SUSCEPTIBLE_VAR: 0
+  USE_GROUND_TRUTH_4WK_AVG: false
+  USE_GROUND_TRUTH_CASE_NUMBERS: false
+  age_group_file: populations/pop25015_sample5000/age.pickle
+  calibration: true
+  device: cpu
+  disease_stage_file: populations/pop25015_sample5000/disease_stages.csv
+  infection_network_file: populations/pop25015_sample5000/mobility_networks/0.csv
+  initial_infection_ratio: 0.04
+  learning_params:
+    betas:
+    - 0.5
+    - 0.5
+    lr: 0.005
+    lr_gamma: 0.9999
+    model_path: saved_model.pth
+  mapping_path: populations/pop25015_sample5000/mapping.json
+  num_agents: 5000
+  num_episodes: 1
+  num_steps_per_episode: 35
+  num_substeps_per_step: 2
+  population_dir: populations/pop25015_sample5000
+state:
+  agents:
+    citizens:
+      number: 5000
+      properties:
+        age:
+          dtype: int
+          initialization_function:
+            arguments:
+              attribute:
+                initialization_function: null
+                learnable: false
+                name: Age
+                shape: null
+                value: age
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Filepath for age group stage
+                shape:
+                - 1
+                value: populations/pop25015_sample5000/age.pickle
+            generator: load_population_attribute
+          learnable: false
+          name: Age
+          shape:
+          - 5000
+          - 1
+        disease_stage:
+          dtype: int
+          initialization_function:
+            arguments:
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Disease Stage File
+                shape:
+                - 1
+                value: populations/pop25015_sample5000/disease_stages.csv
+            generator: read_from_file
+          learnable: false
+          name: Disease Stage
+          shape:
+          - 5000
+          - 1
+        id:
+          dtype: float
+          initialization_function:
+            arguments:
+              pop_size:
+                initialization_function: null
+                learnable: false
+                name: population size
+                shape:
+                - 1
+                value: 5000
+            generator: initialize_id
+          learnable: false
+          name: id
+          shape:
+          - 5000
+          - 1
+        infected_time:
+          dtype: int
+          initialization_function:
+            arguments:
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Filepath for initial disease stages
+                shape: null
+                value: populations/pop25015_sample5000/disease_stages.csv
+              num_steps:
+                initialization_function: null
+                learnable: false
+                name: Num steps per episode
+                shape:
+                - 1
+                value: 35
+            generator: get_infected_time
+          learnable: false
+          name: Last Infected timestep
+          shape:
+          - 5000
+          - 1
+        next_stage_time:
+          dtype: int
+          initialization_function:
+            arguments:
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Filepath for initial disease stages
+                shape: null
+                value: populations/pop25015_sample5000/disease_stages.csv
+              num_steps:
+                initialization_function: null
+                learnable: false
+                name: Num steps per episode
+                shape:
+                - 1
+                value: 35
+            generator: get_next_stage_time
+          learnable: false
+          name: Timestep for next transition
+          shape:
+          - 5000
+          - 1
+          value: 0
+  environment:
+    SFInfector:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: Infectiousness of Infector
+      shape:
+      - 5
+      value:
+      - 0.0
+      - 0.33
+      - 0.72
+      - 0.0
+      - 0.0
+    SFSusceptibility:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: Susceptibility by Age Group
+      shape:
+      - 9
+      value:
+      - 0.35
+      - 0.69
+      - 1.03
+      - 1.03
+      - 1.03
+      - 1.03
+      - 1.27
+      - 1.52
+      - 1.52
+    daily_deaths:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: daily_deaths
+      shape:
+      - 35
+      value: 0
+    daily_infected:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: daily_infected
+      shape:
+      - 35
+      value: 0
+    lam_gamma_integrals:
+      dtype: float
+      initialization_function:
+        arguments:
+          rate:
+            dtype: float
+            initialization_function: null
+            learnable: false
+            name: Lam Gamma Rate
+            shape:
+            - 1
+            value: 2.4
+          scale:
+            dtype: float
+            initialization_function: null
+            learnable: false
+            name: Lam Gamma Scale
+            shape:
+            - 1
+            value: 5.5
+          t:
+            dtype: int
+            initialization_function: null
+            learnable: false
+            name: Num Steps
+            shape:
+            - 1
+            value: 35
+        generator: get_lam_gamma_integrals
+      learnable: false
+      name: Lam Gamma Integrals
+      shape:
+      - 10
+    mean_interactions:
+      dtype: int
+      initialization_function:
+        arguments:
+          file_path:
+            initialization_function: null
+            learnable: false
+            name: Filepath for age group stage
+            shape:
+            - 1
+            value: populations/pop25015_sample5000/age.pickle
+        generator: get_mean_agent_interactions
+      learnable: false
+      name: Mean agent interactions across networks
+      shape:
+      - 5000
+      - 1
+  network:
+    agent_agent:
+      infection_network:
+        arguments:
+          file_path: populations/pop25015_sample5000/mobility_networks/0.csv
+        type: network_from_file
+  objects: null
+substeps:
+  '0':
+    active_agents:
+    - citizens
+    description: Transmission of new infections
+    name: Transmission
+    observation:
+      citizens: null
+    policy:
+      citizens:
+        make_isolation_decision:
+          arguments:
+            align_adjustment_vector:
+              dtype: float
+              initialization_function: null
+              learnable: true
+              name: align LLM agents to the populations by shifting
+              shape:
+              - 6
+              value: 0.3
+            align_vector:
+              dtype: float
+              initialization_function: null
+              learnable: true
+              name: align LLM agents to the populations by scaling
+              shape:
+              - 6
+              value: 0.3
+            initial_isolation_prob:
+              dtype: float
+              initialization_function: null
+              learnable: true
+              name: initialize infection prob for the LLM
+              shape:
+              - 6
+              value: 0.5
+          generator: MakeIsolationDecision
+          input_variables:
+            age: agents/citizens/age
+          output_variables:
+          - isolation_decision
+    reward: null
+    transition:
+      new_transmission:
+        arguments:
+          R2:
+            dtype: float
+            initialization_function: null
+            learnable: true
+            name: R2
+            shape:
+            - 5
+            value: 4.75
+        generator: NewTransmission
+        input_variables:
+          SFInfector: environment/SFInfector
+          SFSusceptibility: environment/SFSusceptibility
+          adjacency_matrix: network/agent_agent/infection_network/adjacency_matrix
+          age: agents/citizens/age
+          daily_infected: environment/daily_infected
+          disease_stage: agents/citizens/disease_stage
+          exposed_to_infected_time: environment/exposed_to_infected_time
+          infected_time: agents/citizens/infected_time
+          lam_gamma_integrals: environment/lam_gamma_integrals
+          mean_interactions: environment/mean_interactions
+          next_stage_time: agents/citizens/next_stage_time
+          protein_features: agents/citizens/protein_features
+        output_variables:
+        - disease_stage
+        - next_stage_time
+        - infected_time
+        - daily_infected
+  '1':
+    active_agents:
+    - citizens
+    description: Evolution of previously infected agents
+    name: Disease Progression
+    observation:
+      citizens: null
+    policy:
+      citizens: null
+    reward: null
+    transition:
+      seirm_progression:
+        arguments:
+          M:
+            dtype: float
+            initialization_function: null
+            learnable: true
+            name: Mortality Rate
+            shape:
+            - 1
+            value: 0.12
+        generator: SEIRMProgression
+        input_variables:
+          daily_deaths: environment/daily_deaths
+          disease_stage: agents/citizens/disease_stage
+          exposed_to_infected_time: environment/exposed_to_infected_time
+          infected_to_recovered_time: environment/infected_to_recovered_time
+          next_stage_time: agents/citizens/next_stage_time
+        output_variables:
+        - disease_stage
+        - next_stage_time
+        - daily_deaths
+
+================================================
+
+:: preparing simulation...
+
+
+STDERR:
+Traceback (most recent call last):
+  File "/home/namishah/miniconda3/envs/covid_clean/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/namishah/miniconda3/envs/covid_clean/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/namishah/alex/gen-cov-abm/covid_abm/main.py", line 89, in <module>
+    runner.init()
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/runner.py", line 28, in init
+    self.initializer.initialize()
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/initializer.py", line 328, in initialize
+    self.substeps()
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/initializer.py", line 318, in substeps
+    self.registry.transition_helpers[transition_func](
+  File "/home/namishah/alex/gen-cov-abm/covid_abm/substeps/new_transmission/transition.py", line 55, in __init__
+    self.county_embeddings = self._load_county_embeddings()
+  File "/home/namishah/alex/gen-cov-abm/covid_abm/substeps/new_transmission/transition.py", line 98, in _load_county_embeddings
+    raise Exception(
+Exception: Error: Embeddings directory not found for county 25015
+Searched paths: ['embeddings/25015', 'populations/../embeddings/25015']
+
+[ERR] County 25015, window 202031-202035 failed: Command failed (exit 1).
+STDOUT:
+
+================= DEBUG CONFIG =================
+Loaded from: /tmp/covid_config_zhkr902r.yaml
+simulation_metadata:
+  ALIGN_LLM: true
+  EXECUTION_MODE: heuristic
+  EXPOSED_TO_INFECTED_TIME: 5
+  EXPOSED_VAR: 1
+  INCLUDE_WEEK_COUNT: true
+  INFECTED_TO_RECOVERED_TIME: 5
+  INFECTED_VAR: 2
+  INFINITY_TIME: 130
+  INITIAL_INFECTION_RATE: 0.04
+  MORTALITY_VAR: 4
+  NEIGHBORHOOD: Astoria
+  NUM_TRAIN_WEEKS: 2
+  NUM_WEEKS: 5
+  OPENAI_API_KEY: None
+  RECOVERED_TO_SUSCEPTIBLE_TIME: 100
+  RECOVERED_VAR: 3
+  RESCALE_CONFIG: 0
+  START_WEEK: 202048
+  SUSCEPTIBLE_VAR: 0
+  USE_GROUND_TRUTH_4WK_AVG: false
+  USE_GROUND_TRUTH_CASE_NUMBERS: false
+  age_group_file: populations/pop25015_sample5000/age.pickle
+  calibration: true
+  device: cpu
+  disease_stage_file: populations/pop25015_sample5000/disease_stages.csv
+  infection_network_file: populations/pop25015_sample5000/mobility_networks/0.csv
+  initial_infection_ratio: 0.04
+  learning_params:
+    betas:
+    - 0.5
+    - 0.5
+    lr: 0.005
+    lr_gamma: 0.9999
+    model_path: saved_model.pth
+  mapping_path: populations/pop25015_sample5000/mapping.json
+  num_agents: 5000
+  num_episodes: 1
+  num_steps_per_episode: 35
+  num_substeps_per_step: 2
+  population_dir: populations/pop25015_sample5000
+state:
+  agents:
+    citizens:
+      number: 5000
+      properties:
+        age:
+          dtype: int
+          initialization_function:
+            arguments:
+              attribute:
+                initialization_function: null
+                learnable: false
+                name: Age
+                shape: null
+                value: age
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Filepath for age group stage
+                shape:
+                - 1
+                value: populations/pop25015_sample5000/age.pickle
+            generator: load_population_attribute
+          learnable: false
+          name: Age
+          shape:
+          - 5000
+          - 1
+        disease_stage:
+          dtype: int
+          initialization_function:
+            arguments:
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Disease Stage File
+                shape:
+                - 1
+                value: populations/pop25015_sample5000/disease_stages.csv
+            generator: read_from_file
+          learnable: false
+          name: Disease Stage
+          shape:
+          - 5000
+          - 1
+        id:
+          dtype: float
+          initialization_function:
+            arguments:
+              pop_size:
+                initialization_function: null
+                learnable: false
+                name: population size
+                shape:
+                - 1
+                value: 5000
+            generator: initialize_id
+          learnable: false
+          name: id
+          shape:
+          - 5000
+          - 1
+        infected_time:
+          dtype: int
+          initialization_function:
+            arguments:
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Filepath for initial disease stages
+                shape: null
+                value: populations/pop25015_sample5000/disease_stages.csv
+              num_steps:
+                initialization_function: null
+                learnable: false
+                name: Num steps per episode
+                shape:
+                - 1
+                value: 35
+            generator: get_infected_time
+          learnable: false
+          name: Last Infected timestep
+          shape:
+          - 5000
+          - 1
+        next_stage_time:
+          dtype: int
+          initialization_function:
+            arguments:
+              file_path:
+                initialization_function: null
+                learnable: false
+                name: Filepath for initial disease stages
+                shape: null
+                value: populations/pop25015_sample5000/disease_stages.csv
+              num_steps:
+                initialization_function: null
+                learnable: false
+                name: Num steps per episode
+                shape:
+                - 1
+                value: 35
+            generator: get_next_stage_time
+          learnable: false
+          name: Timestep for next transition
+          shape:
+          - 5000
+          - 1
+          value: 0
+  environment:
+    SFInfector:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: Infectiousness of Infector
+      shape:
+      - 5
+      value:
+      - 0.0
+      - 0.33
+      - 0.72
+      - 0.0
+      - 0.0
+    SFSusceptibility:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: Susceptibility by Age Group
+      shape:
+      - 9
+      value:
+      - 0.35
+      - 0.69
+      - 1.03
+      - 1.03
+      - 1.03
+      - 1.03
+      - 1.27
+      - 1.52
+      - 1.52
+    daily_deaths:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: daily_deaths
+      shape:
+      - 35
+      value: 0
+    daily_infected:
+      dtype: float
+      initialization_function: null
+      learnable: false
+      name: daily_infected
+      shape:
+      - 35
+      value: 0
+    lam_gamma_integrals:
+      dtype: float
+      initialization_function:
+        arguments:
+          rate:
+            dtype: float
+            initialization_function: null
+            learnable: false
+            name: Lam Gamma Rate
+            shape:
+            - 1
+            value: 2.4
+          scale:
+            dtype: float
+            initialization_function: null
+            learnable: false
+            name: Lam Gamma Scale
+            shape:
+            - 1
+            value: 5.5
+          t:
+            dtype: int
+            initialization_function: null
+            learnable: false
+            name: Num Steps
+            shape:
+            - 1
+            value: 35
+        generator: get_lam_gamma_integrals
+      learnable: false
+      name: Lam Gamma Integrals
+      shape:
+      - 10
+    mean_interactions:
+      dtype: int
+      initialization_function:
+        arguments:
+          file_path:
+            initialization_function: null
+            learnable: false
+            name: Filepath for age group stage
+            shape:
+            - 1
+            value: populations/pop25015_sample5000/age.pickle
+        generator: get_mean_agent_interactions
+      learnable: false
+      name: Mean agent interactions across networks
+      shape:
+      - 5000
+      - 1
+  network:
+    agent_agent:
+      infection_network:
+        arguments:
+          file_path: populations/pop25015_sample5000/mobility_networks/0.csv
+        type: network_from_file
+  objects: null
+substeps:
+  '0':
+    active_agents:
+    - citizens
+    description: Transmission of new infections
+    name: Transmission
+    observation:
+      citizens: null
+    policy:
+      citizens:
+        make_isolation_decision:
+          arguments:
+            align_adjustment_vector:
+              dtype: float
+              initialization_function: null
+              learnable: true
+              name: align LLM agents to the populations by shifting
+              shape:
+              - 6
+              value: 0.3
+            align_vector:
+              dtype: float
+              initialization_function: null
+              learnable: true
+              name: align LLM agents to the populations by scaling
+              shape:
+              - 6
+              value: 0.3
+            initial_isolation_prob:
+              dtype: float
+              initialization_function: null
+              learnable: true
+              name: initialize infection prob for the LLM
+              shape:
+              - 6
+              value: 0.5
+          generator: MakeIsolationDecision
+          input_variables:
+            age: agents/citizens/age
+          output_variables:
+          - isolation_decision
+    reward: null
+    transition:
+      new_transmission:
+        arguments:
+          R2:
+            dtype: float
+            initialization_function: null
+            learnable: true
+            name: R2
+            shape:
+            - 5
+            value: 4.75
+        generator: NewTransmission
+        input_variables:
+          SFInfector: environment/SFInfector
+          SFSusceptibility: environment/SFSusceptibility
+          adjacency_matrix: network/agent_agent/infection_network/adjacency_matrix
+          age: agents/citizens/age
+          daily_infected: environment/daily_infected
+          disease_stage: agents/citizens/disease_stage
+          exposed_to_infected_time: environment/exposed_to_infected_time
+          infected_time: agents/citizens/infected_time
+          lam_gamma_integrals: environment/lam_gamma_integrals
+          mean_interactions: environment/mean_interactions
+          next_stage_time: agents/citizens/next_stage_time
+          protein_features: agents/citizens/protein_features
+        output_variables:
+        - disease_stage
+        - next_stage_time
+        - infected_time
+        - daily_infected
+  '1':
+    active_agents:
+    - citizens
+    description: Evolution of previously infected agents
+    name: Disease Progression
+    observation:
+      citizens: null
+    policy:
+      citizens: null
+    reward: null
+    transition:
+      seirm_progression:
+        arguments:
+          M:
+            dtype: float
+            initialization_function: null
+            learnable: true
+            name: Mortality Rate
+            shape:
+            - 1
+            value: 0.12
+        generator: SEIRMProgression
+        input_variables:
+          daily_deaths: environment/daily_deaths
+          disease_stage: agents/citizens/disease_stage
+          exposed_to_infected_time: environment/exposed_to_infected_time
+          infected_to_recovered_time: environment/infected_to_recovered_time
+          next_stage_time: agents/citizens/next_stage_time
+        output_variables:
+        - disease_stage
+        - next_stage_time
+        - daily_deaths
+
+================================================
+
+:: preparing simulation...
+
+
+STDERR:
+Traceback (most recent call last):
+  File "/home/namishah/miniconda3/envs/covid_clean/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/namishah/miniconda3/envs/covid_clean/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/namishah/alex/gen-cov-abm/covid_abm/main.py", line 89, in <module>
+    runner.init()
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/runner.py", line 28, in init
+    self.initializer.initialize()
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/initializer.py", line 328, in initialize
+    self.substeps()
+  File "/home/namishah/alex/gen-cov-abm/AgentTorch/agent_torch/core/initializer.py", line 318, in substeps
+    self.registry.transition_helpers[transition_func](
+  File "/home/namishah/alex/gen-cov-abm/covid_abm/substeps/new_transmission/transition.py", line 55, in __init__
+    self.county_embeddings = self._load_county_embeddings()
+  File "/home/namishah/alex/gen-cov-abm/covid_abm/substeps/new_transmission/transition.py", line 98, in _load_county_embeddings
+    raise Exception(
+Exception: Error: Embeddings directory not found for county 25015
+Searched paths: ['embeddings/25015', 'populations/../embeddings/25015']
+
+[OK] County 25021, window 202027-202031: ND=1.8431, RMSE=189.9879, MAE=67.4571
+[OK] County 25021, window 202031-202035: ND=2.1532, RMSE=156.6297, MAE=45.7714
+[OK] County 25023, window 202027-202031: ND=4.0251, RMSE=247.4277, MAE=55.0857
+[OK] County 25023, window 202031-202035: ND=3.4137, RMSE=256.4183, MAE=59.8857
+[OK] County 25025, window 202027-202031: ND=1.5499, RMSE=168.5096, MAE=73.6000
+[OK] County 25025, window 202031-202035: ND=1.2904, RMSE=195.6007, MAE=91.8000
+[OK] County 25027, window 202027-202031: ND=2.0715, RMSE=209.8477, MAE=66.2286
+[OK] County 25027, window 202031-202035: ND=2.0076, RMSE=170.2515, MAE=53.0000
+
+Saved metrics to Results/metrics_summary_calib.csv
+
+Aggregate metrics by window:
+- 202027-202031: ND=6.4999, RMSE=262.5137, MAE=68.7524 (n=9)
+- 202031-202035: ND=7.7211, RMSE=249.3277, MAE=65.1619 (n=9)

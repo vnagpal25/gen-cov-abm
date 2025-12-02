@@ -132,6 +132,20 @@ class NewTransmission(SubstepTransitionMessagePassing):
 
         return embeddings_tensor
 
+    def _get_or_init_protein_features(self, state):
+        citizens = state["agents"]["citizens"]
+        if "protein_features" not in citizens:
+            num_agents = citizens["age"].shape[0]
+            feature_dim = (
+                self.county_embeddings.shape[1]
+                if hasattr(self, "county_embeddings")
+                else 0
+            )
+            citizens["protein_features"] = torch.zeros(
+                (num_agents, feature_dim), dtype=torch.float32, device=self.device
+            )
+        return citizens["protein_features"]
+
     def _initialize_protein_features(self, state, infected_agents_mask):
         """
         Initialize protein features for agents at t=0.
@@ -140,7 +154,7 @@ class NewTransmission(SubstepTransitionMessagePassing):
         state: starting simulation state
         infected_agents_mask: boolean tensor indicating infected agents
         """
-        protein_features = state["agents"]["citizens"]["protein_features"]
+        protein_features = self._get_or_init_protein_features(state)
 
         # indices of infected agents
         infected_indices = torch.where(infected_agents_mask.squeeze())[0]
@@ -171,7 +185,7 @@ class NewTransmission(SubstepTransitionMessagePassing):
         all_edgelist: edge list from adjacency matrix
         current_stages: disease stages of all agents
         """
-        protein_features = state["agents"]["citizens"]["protein_features"]
+        protein_features = self._get_or_init_protein_features(state)
 
         # indices of newly exposed agents
         newly_exposed_indices = torch.where(newly_exposed_mask.squeeze())[0]
@@ -195,7 +209,7 @@ class NewTransmission(SubstepTransitionMessagePassing):
             # filter to only exposed neighbors
             infected_neighbors = neighbor_indices[infected_mask[neighbor_indices]]
 
-            if infected_neighbors:
+            if len(infected_neighbors) > 0:
                 # Average the embeddings of infected neighbors
                 neighbor_embeddings = protein_features[infected_neighbors]
                 avg_embedding = neighbor_embeddings.mean(dim=0)

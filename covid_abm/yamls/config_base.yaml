@@ -147,20 +147,6 @@ state:
           - ${state.agents.citizens.number}
           - 1
           value: 0
-        protein_features:
-          dtype: float
-          initialization_function:
-            arguments:
-              feature_dim:
-                value: 1280  # protein vector dimension
-              num_agents:
-                value: ${state.agents.citizens.number}
-            generator: initialize_custom_features
-          learnable: false
-          name: Protein feature vector for each agent (ORF1a)
-          shape:
-          - ${state.agents.citizens.number}
-          - 1280  # Feature dimension
   environment:
     SFInfector:
       dtype: float

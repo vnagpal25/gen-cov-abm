@@ -52,11 +52,7 @@ from ...calibration.utils.misc import week_num_to_epiweek, name_to_neighborhood
 #         return {self.output_variables[0]: will_isolate}
 
 class MakeIsolationDecision(SubstepAction):
-    """
-    Simple stand-in for the LLM-based policy.
-    Always outputs `False` for isolation for every agent so the simulator
-    can run without external dependencies.
-    """
+    """Always outputs False for isolation so the simulator can run stand-alone."""
 
     def __init__(self, config, input_variables, output_variables, arguments):
         config = config.copy()
