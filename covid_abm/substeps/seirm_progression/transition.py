@@ -154,14 +154,23 @@ class SEIRMProgression(SubstepTransition):
 
         # Compute genome progression modifier using MLP
         # (skips agents with zero vectors)
+        
         genome_modifier = self._compute_genome_modifier(protein_features)
 
+        # apply genome modifier to the DURATION (delta_t) between stages, not absolute time
+        # calculatre duration from current time to next stage transition
+        delta_t = agents_next_stage_times - t
+        
+        # Apply modifier to duration: modifier < 1 speeds up, modifier > 1 slows down
         # speed up progression as necessary by genome
         # TODO modifier always less than 1 so will always speed up the
         # infection
-        # scale to [0, 2] perhaps 0 < x < 1 -> speed up
+        # perhaps scale to [0, 2] perhaps 0 < x < 1 -> speed up
         #                         1 < x < 2 -> slow down
-        genome_adjusted_next_stage_times = agents_next_stage_times * genome_modifier
+        genome_adjusted_delta_t = delta_t * genome_modifier
+        
+        # calculate new absolute transition times
+        genome_adjusted_next_stage_times = t + genome_adjusted_delta_t
 
         # new_stages = self.update_current_stages(
         #     t, current_stages, agents_next_stage_times
