@@ -17,14 +17,28 @@
 set -euo pipefail
 export PYTHONNOUSERSITE=1
 
-module load python/3.10.4
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate covid_clean
+PYTHON=~/miniconda3/envs/covid_clean/bin/python
 
 cd /home/namishah/alex/gen-cov-abm
 
-python -m covid_abm.run_calib_nn \
-    --base_config covid_abm/yamls/config_base.yaml \
-    --truth_column cases \
-    --epochs 10 \
-    --device cuda
+$PYTHON -m covid_abm.run_calib_nn \
+  --base_config covid_abm/yamls/config_base.yaml \
+  --truth_column cases \
+  --epochs 10 \
+  --device cuda \
+  --population_suffix sample30000 \
+  --start_date 2021-06-01 \
+  --end_date 2021-07-05 \
+  --output_dir Results/calib_params_jun21
+
+$PYTHON -m covid_abm.run_calib_nn \
+  --base_config covid_abm/yamls/config_base.yaml \
+  --truth_column cases \
+  --epochs 10 \
+  --device cuda \
+  --population_suffix sample30000 \
+  --start_date 2021-06-27 \
+  --end_date 2021-07-31 \
+  --output_dir Results/calib_params_jul21

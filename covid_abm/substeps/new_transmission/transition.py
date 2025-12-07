@@ -353,7 +353,10 @@ class NewTransmission(SubstepTransitionMessagePassing):
         )
 
     def _generate_one_hot_tensor(self, timestep, num_timesteps):
-        timestep_tensor = torch.tensor([timestep])
+        if num_timesteps <= 0:
+            raise ValueError("num_timesteps must be positive.")
+        timestep_clamped = max(0, min(timestep, num_timesteps - 1))
+        timestep_tensor = torch.tensor([timestep_clamped])
         one_hot_tensor = F.one_hot(timestep_tensor, num_classes=num_timesteps)
         one_hot_tensor = one_hot_tensor.view(
             1, -1

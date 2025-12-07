@@ -18,9 +18,25 @@ PROJECT_ROOT=/home/namishah/alex/gen-cov-abm
 PYTHON=/home/namishah/miniconda3/envs/covid_clean/bin/python
 
 cd "$PROJECT_ROOT"
-"$PYTHON" -m covid_abm.run_metrics \
+
+# June 1 – July 5 window
+$PYTHON -m covid_abm.run_metrics \
   --base_config covid_abm/yamls/config_base.yaml \
   --truth_column cases \
+  --population_suffix sample30000 \
+  --start_date 2021-06-01 \
+  --end_date 2021-07-05 \
   --use_calib \
-  --calib_dir Results/calib_params \
-  --output_csv Results/metrics_summary_calib.csv
+  --calib_dir Results/calib_params_jun21 \
+  --output_csv Results/metrics_summary_jun21.csv
+
+# June 27 – July 31 window
+$PYTHON -m covid_abm.run_metrics \
+  --base_config covid_abm/yamls/config_base.yaml \
+  --truth_column cases \
+  --population_suffix sample30000 \
+  --start_date 2021-06-27 \
+  --end_date 2021-07-31 \
+  --use_calib \
+  --calib_dir Results/calib_params_jul21 \
+  --output_csv Results/metrics_summary_jul21.csv

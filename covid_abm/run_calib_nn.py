@@ -1,6 +1,5 @@
 import argparse
 import copy
-import os
 from pathlib import Path
 
 import pandas as pd
@@ -19,6 +18,7 @@ from covid_abm.calibration.utils.data import (
 )
 from covid_abm.calibration.utils.feature import Feature
 from covid_abm.calibration.utils.neighborhood import Neighborhood
+from covid_abm.utils.windows import WindowSpec, derive_windows
 
 
 COUNTIES = [
@@ -27,22 +27,33 @@ COUNTIES = [
     "25005",
     "25009",
     "25013",
-    "25015",
     "25021",
     "25023",
     "25025",
     "25027",
 ]
 
-WINDOWS = [
-    {"label": "202027-202031", "offset": 30, "start_week": 202027},
-    {"label": "202031-202035", "offset": 65, "start_week": 202031},
-]
+
+def infer_population_size(pop_prefix: str) -> int:
+    age_pickle = Path(f"{pop_prefix}/age.pickle")
+    if not age_pickle.exists():
+        raise FileNotFoundError(f"{age_pickle} not found.")
+    series = pd.read_pickle(age_pickle)
+    if not isinstance(series, pd.Series):
+        raise ValueError(f"{age_pickle} did not contain a pandas Series.")
+    return len(series)
 
 
-def prepare_config(base_config: dict, county: str, start_week: int) -> dict:
+def prepare_config(
+    base_config: dict, county: str, population_suffix: str, start_week: int
+) -> dict:
     cfg = copy.deepcopy(base_config)
-    pop_prefix = f"populations/pop{county}_sample5000"
+    pop_prefix = f"populations/pop{county}_{population_suffix}"
+    if not Path(pop_prefix).exists():
+        raise FileNotFoundError(
+            f"Population directory {pop_prefix} not found. Run the sampler first."
+        )
+    pop_size = infer_population_size(pop_prefix)
     cfg["simulation_metadata"]["population_dir"] = pop_prefix
     cfg["simulation_metadata"]["age_group_file"] = f"{pop_prefix}/age.pickle"
     cfg["simulation_metadata"]["disease_stage_file"] = f"{pop_prefix}/disease_stages.csv"
@@ -50,6 +61,7 @@ def prepare_config(base_config: dict, county: str, start_week: int) -> dict:
         "infection_network_file"
     ] = f"{pop_prefix}/mobility_networks/0.csv"
     cfg["simulation_metadata"]["mapping_path"] = f"{pop_prefix}/mapping.json"
+    cfg["simulation_metadata"]["num_agents"] = pop_size
     cfg["simulation_metadata"]["calibration"] = True
     cfg["simulation_metadata"]["START_WEEK"] = start_week
 
@@ -129,24 +141,25 @@ def assign_calibration_tensors(runner, r2_values: torch.Tensor, mortality: torch
 
 def train_county_window(
     county: str,
-    window: dict,
+    window: WindowSpec,
     base_config: dict,
     truth_column: str,
     epochs: int,
     lr: float,
     device: torch.device,
     output_dir: Path,
+    population_suffix: str,
 ):
     num_steps = base_config["simulation_metadata"]["num_steps_per_episode"]
     num_weeks = base_config["simulation_metadata"]["NUM_WEEKS"]
 
-    cfg = prepare_config(base_config, county, window["start_week"])
+    cfg = prepare_config(base_config, county, population_suffix, window.start_week)
     registry = get_registry()
     runner = get_runner(cfg, registry)
     runner.init()
 
-    metadata, features = load_features(county, window["start_week"], num_weeks, device)
-    gt = load_ground_truth(county, window["offset"], num_steps, truth_column).to(device)
+    metadata, features = load_features(county, window.start_week, num_weeks, device)
+    gt = load_ground_truth(county, window.offset, num_steps, truth_column).to(device)
 
     model = CalibNN(
         metas_train_dim=len(Neighborhood),
@@ -182,7 +195,7 @@ def train_county_window(
 
         if (epoch + 1) % max(1, epochs // 10) == 0:
             print(
-                f"[Train] County {county} window {window['label']} "
+                f"[Train] County {county} window {window.label} "
                 f"epoch {epoch+1}/{epochs} loss={loss.item():.4f}"
             )
 
@@ -193,13 +206,13 @@ def train_county_window(
     runner.reset()
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = output_dir / f"{county}_{window['label']}.pt"
+    output_path = output_dir / f"{county}_{window.label}.pt"
     torch.save(
         {
             "calibrate_R2": params.detach().cpu().unsqueeze(1),
             "calibrate_M": mortality_param.detach().cpu(),
             "county": county,
-            "window": window["label"],
+            "window": window.label,
         },
         output_path,
     )
@@ -233,15 +246,44 @@ def main():
         default="cpu",
         help="Computation device (cpu or cuda). Note: runner currently uses CPU tensors.",
     )
+    parser.add_argument(
+        "--start_date",
+        default="2020-06-01",
+        help="Inclusive start date for calibration windows (YYYY-MM-DD).",
+    )
+    parser.add_argument(
+        "--end_date",
+        default="2021-07-31",
+        help="Inclusive end date for calibration windows (YYYY-MM-DD).",
+    )
+    parser.add_argument(
+        "--population_suffix",
+        default="sample30000",
+        help="Population directory suffix (e.g., sample30000).",
+    )
     args = parser.parse_args()
 
     device = torch.device(args.device)
     base_config = read_config(args.base_config)
     output_dir = Path(args.output_dir)
+    window_days = base_config["simulation_metadata"]["num_steps_per_episode"]
+
+    daily_dir = Path("data/daily_county_data")
+    base_daily = None
+    for county in COUNTIES:
+        candidate = daily_dir / f"{county}_daily_data.csv"
+        if candidate.exists():
+            base_daily = candidate
+            break
+    if base_daily is None:
+        raise FileNotFoundError("Could not find any daily county data files.")
+    windows = derive_windows(base_daily, args.start_date, args.end_date, window_days)
+    if not windows:
+        raise RuntimeError("No calibration windows generated for the requested range.")
 
     for county in COUNTIES:
-        for window in WINDOWS:
-            print(f"\n=== Training CalibNN for county {county}, window {window['label']} ===")
+        for window in windows:
+            print(f"\n=== Training CalibNN for county {county}, window {window.label} ===")
             train_county_window(
                 county=county,
                 window=window,
@@ -251,6 +293,7 @@ def main():
                 lr=args.lr,
                 device=device,
                 output_dir=output_dir,
+                population_suffix=args.population_suffix,
             )
 
 
