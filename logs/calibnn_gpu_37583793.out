@@ -1,0 +1,234 @@
+
+=== Training CalibNN for county 25001, window 202122-202127 ===
+[Train] County 25001 window 202122-202127 epoch 1/10 loss=31776.4286
+[Train] County 25001 window 202122-202127 epoch 2/10 loss=16911.9714
+[Train] County 25001 window 202122-202127 epoch 3/10 loss=11558.6571
+[Train] County 25001 window 202122-202127 epoch 4/10 loss=10689.1429
+[Train] County 25001 window 202122-202127 epoch 5/10 loss=7515.8000
+[Train] County 25001 window 202122-202127 epoch 6/10 loss=7851.8000
+[Train] County 25001 window 202122-202127 epoch 7/10 loss=9236.0286
+[Train] County 25001 window 202122-202127 epoch 8/10 loss=8070.2000
+[Train] County 25001 window 202122-202127 epoch 9/10 loss=7829.0000
+[Train] County 25001 window 202122-202127 epoch 10/10 loss=7033.6571
+[SAVE] Stored calibration params at Results/calib_params_jun21/25001_202122-202127.pt
+
+=== Training CalibNN for county 25003, window 202122-202127 ===
+[Train] County 25003 window 202122-202127 epoch 1/10 loss=171514.2857
+[Train] County 25003 window 202122-202127 epoch 2/10 loss=144258.8000
+[Train] County 25003 window 202122-202127 epoch 3/10 loss=89801.6857
+[Train] County 25003 window 202122-202127 epoch 4/10 loss=54026.0571
+[Train] County 25003 window 202122-202127 epoch 5/10 loss=49029.3429
+[Train] County 25003 window 202122-202127 epoch 6/10 loss=48760.6286
+[Train] County 25003 window 202122-202127 epoch 7/10 loss=48754.0571
+[Train] County 25003 window 202122-202127 epoch 8/10 loss=42273.3714
+[Train] County 25003 window 202122-202127 epoch 9/10 loss=43174.7714
+[Train] County 25003 window 202122-202127 epoch 10/10 loss=48007.0000
+[SAVE] Stored calibration params at Results/calib_params_jun21/25003_202122-202127.pt
+
+=== Training CalibNN for county 25005, window 202122-202127 ===
+[Train] County 25005 window 202122-202127 epoch 1/10 loss=2968.6286
+[Train] County 25005 window 202122-202127 epoch 2/10 loss=1854.3429
+[Train] County 25005 window 202122-202127 epoch 3/10 loss=975.0857
+[Train] County 25005 window 202122-202127 epoch 4/10 loss=804.1714
+[Train] County 25005 window 202122-202127 epoch 5/10 loss=935.9714
+[Train] County 25005 window 202122-202127 epoch 6/10 loss=751.9714
+[Train] County 25005 window 202122-202127 epoch 7/10 loss=699.5429
+[Train] County 25005 window 202122-202127 epoch 8/10 loss=719.5714
+[Train] County 25005 window 202122-202127 epoch 9/10 loss=592.9714
+[Train] County 25005 window 202122-202127 epoch 10/10 loss=717.7429
+[SAVE] Stored calibration params at Results/calib_params_jun21/25005_202122-202127.pt
+
+=== Training CalibNN for county 25009, window 202122-202127 ===
+[Train] County 25009 window 202122-202127 epoch 1/10 loss=1846.8571
+[Train] County 25009 window 202122-202127 epoch 2/10 loss=526.8000
+[Train] County 25009 window 202122-202127 epoch 3/10 loss=341.5143
+[Train] County 25009 window 202122-202127 epoch 4/10 loss=339.2000
+[Train] County 25009 window 202122-202127 epoch 5/10 loss=325.0571
+[Train] County 25009 window 202122-202127 epoch 6/10 loss=375.4286
+[Train] County 25009 window 202122-202127 epoch 7/10 loss=487.5714
+[Train] County 25009 window 202122-202127 epoch 8/10 loss=389.6286
+[Train] County 25009 window 202122-202127 epoch 9/10 loss=291.5429
+[Train] County 25009 window 202122-202127 epoch 10/10 loss=257.4571
+[SAVE] Stored calibration params at Results/calib_params_jun21/25009_202122-202127.pt
+
+=== Training CalibNN for county 25013, window 202122-202127 ===
+[Train] County 25013 window 202122-202127 epoch 1/10 loss=4165.4571
+[Train] County 25013 window 202122-202127 epoch 2/10 loss=2093.3143
+[Train] County 25013 window 202122-202127 epoch 3/10 loss=1323.4571
+[Train] County 25013 window 202122-202127 epoch 4/10 loss=954.5429
+[Train] County 25013 window 202122-202127 epoch 5/10 loss=794.8857
+[Train] County 25013 window 202122-202127 epoch 6/10 loss=858.0000
+[Train] County 25013 window 202122-202127 epoch 7/10 loss=834.0286
+[Train] County 25013 window 202122-202127 epoch 8/10 loss=764.6286
+[Train] County 25013 window 202122-202127 epoch 9/10 loss=744.3143
+[Train] County 25013 window 202122-202127 epoch 10/10 loss=578.0857
+[SAVE] Stored calibration params at Results/calib_params_jun21/25013_202122-202127.pt
+
+=== Training CalibNN for county 25021, window 202122-202127 ===
+[Train] County 25021 window 202122-202127 epoch 1/10 loss=1472.6286
+[Train] County 25021 window 202122-202127 epoch 2/10 loss=1563.3714
+[Train] County 25021 window 202122-202127 epoch 3/10 loss=712.1714
+[Train] County 25021 window 202122-202127 epoch 4/10 loss=491.1714
+[Train] County 25021 window 202122-202127 epoch 5/10 loss=296.2286
+[Train] County 25021 window 202122-202127 epoch 6/10 loss=482.6000
+[Train] County 25021 window 202122-202127 epoch 7/10 loss=465.2286
+[Train] County 25021 window 202122-202127 epoch 8/10 loss=522.6286
+[Train] County 25021 window 202122-202127 epoch 9/10 loss=350.3143
+[Train] County 25021 window 202122-202127 epoch 10/10 loss=490.1714
+[SAVE] Stored calibration params at Results/calib_params_jun21/25021_202122-202127.pt
+
+=== Training CalibNN for county 25023, window 202122-202127 ===
+[Train] County 25023 window 202122-202127 epoch 1/10 loss=2809.4857
+[Train] County 25023 window 202122-202127 epoch 2/10 loss=1014.1429
+[Train] County 25023 window 202122-202127 epoch 3/10 loss=754.8286
+[Train] County 25023 window 202122-202127 epoch 4/10 loss=670.9143
+[Train] County 25023 window 202122-202127 epoch 5/10 loss=1101.0571
+[Train] County 25023 window 202122-202127 epoch 6/10 loss=820.6857
+[Train] County 25023 window 202122-202127 epoch 7/10 loss=841.3143
+[Train] County 25023 window 202122-202127 epoch 8/10 loss=629.0000
+[Train] County 25023 window 202122-202127 epoch 9/10 loss=658.4000
+[Train] County 25023 window 202122-202127 epoch 10/10 loss=758.8857
+[SAVE] Stored calibration params at Results/calib_params_jun21/25023_202122-202127.pt
+
+=== Training CalibNN for county 25025, window 202122-202127 ===
+[Train] County 25025 window 202122-202127 epoch 1/10 loss=1990.1714
+[Train] County 25025 window 202122-202127 epoch 2/10 loss=1800.4286
+[Train] County 25025 window 202122-202127 epoch 3/10 loss=932.1143
+[Train] County 25025 window 202122-202127 epoch 4/10 loss=572.4857
+[Train] County 25025 window 202122-202127 epoch 5/10 loss=574.2286
+[Train] County 25025 window 202122-202127 epoch 6/10 loss=661.1143
+[Train] County 25025 window 202122-202127 epoch 7/10 loss=767.0571
+[Train] County 25025 window 202122-202127 epoch 8/10 loss=578.8000
+[Train] County 25025 window 202122-202127 epoch 9/10 loss=486.2000
+[Train] County 25025 window 202122-202127 epoch 10/10 loss=516.8571
+[SAVE] Stored calibration params at Results/calib_params_jun21/25025_202122-202127.pt
+
+=== Training CalibNN for county 25027, window 202122-202127 ===
+[Train] County 25027 window 202122-202127 epoch 1/10 loss=1576.6000
+[Train] County 25027 window 202122-202127 epoch 2/10 loss=736.4857
+[Train] County 25027 window 202122-202127 epoch 3/10 loss=486.3714
+[Train] County 25027 window 202122-202127 epoch 4/10 loss=568.4286
+[Train] County 25027 window 202122-202127 epoch 5/10 loss=506.5429
+[Train] County 25027 window 202122-202127 epoch 6/10 loss=456.4571
+[Train] County 25027 window 202122-202127 epoch 7/10 loss=422.1143
+[Train] County 25027 window 202122-202127 epoch 8/10 loss=368.7143
+[Train] County 25027 window 202122-202127 epoch 9/10 loss=407.5714
+[Train] County 25027 window 202122-202127 epoch 10/10 loss=452.6857
+[SAVE] Stored calibration params at Results/calib_params_jun21/25027_202122-202127.pt
+
+=== Training CalibNN for county 25001, window 202126-202130 ===
+[Train] County 25001 window 202126-202130 epoch 1/10 loss=34145.6857
+[Train] County 25001 window 202126-202130 epoch 2/10 loss=21322.7714
+[Train] County 25001 window 202126-202130 epoch 3/10 loss=12401.7429
+[Train] County 25001 window 202126-202130 epoch 4/10 loss=10276.9429
+[Train] County 25001 window 202126-202130 epoch 5/10 loss=8617.8286
+[Train] County 25001 window 202126-202130 epoch 6/10 loss=9201.3143
+[Train] County 25001 window 202126-202130 epoch 7/10 loss=8881.8857
+[Train] County 25001 window 202126-202130 epoch 8/10 loss=8101.7429
+[Train] County 25001 window 202126-202130 epoch 9/10 loss=9284.7714
+[Train] County 25001 window 202126-202130 epoch 10/10 loss=7742.8571
+[SAVE] Stored calibration params at Results/calib_params_jul21/25001_202126-202130.pt
+
+=== Training CalibNN for county 25003, window 202126-202130 ===
+[Train] County 25003 window 202126-202130 epoch 1/10 loss=190222.3429
+[Train] County 25003 window 202126-202130 epoch 2/10 loss=163323.0571
+[Train] County 25003 window 202126-202130 epoch 3/10 loss=91088.6286
+[Train] County 25003 window 202126-202130 epoch 4/10 loss=63017.9143
+[Train] County 25003 window 202126-202130 epoch 5/10 loss=53060.1429
+[Train] County 25003 window 202126-202130 epoch 6/10 loss=48065.1714
+[Train] County 25003 window 202126-202130 epoch 7/10 loss=43577.0000
+[Train] County 25003 window 202126-202130 epoch 8/10 loss=45973.0571
+[Train] County 25003 window 202126-202130 epoch 9/10 loss=43472.1143
+[Train] County 25003 window 202126-202130 epoch 10/10 loss=42739.2000
+[SAVE] Stored calibration params at Results/calib_params_jul21/25003_202126-202130.pt
+
+=== Training CalibNN for county 25005, window 202126-202130 ===
+[Train] County 25005 window 202126-202130 epoch 1/10 loss=5407.8571
+[Train] County 25005 window 202126-202130 epoch 2/10 loss=3312.5429
+[Train] County 25005 window 202126-202130 epoch 3/10 loss=2936.5143
+[Train] County 25005 window 202126-202130 epoch 4/10 loss=2962.1714
+[Train] County 25005 window 202126-202130 epoch 5/10 loss=2675.9143
+[Train] County 25005 window 202126-202130 epoch 6/10 loss=2822.0000
+[Train] County 25005 window 202126-202130 epoch 7/10 loss=2680.0000
+[Train] County 25005 window 202126-202130 epoch 8/10 loss=2842.7714
+[Train] County 25005 window 202126-202130 epoch 9/10 loss=2811.9714
+[Train] County 25005 window 202126-202130 epoch 10/10 loss=2832.0286
+[SAVE] Stored calibration params at Results/calib_params_jul21/25005_202126-202130.pt
+
+=== Training CalibNN for county 25009, window 202126-202130 ===
+[Train] County 25009 window 202126-202130 epoch 1/10 loss=3227.6286
+[Train] County 25009 window 202126-202130 epoch 2/10 loss=2425.8000
+[Train] County 25009 window 202126-202130 epoch 3/10 loss=2178.7714
+[Train] County 25009 window 202126-202130 epoch 4/10 loss=2002.6000
+[Train] County 25009 window 202126-202130 epoch 5/10 loss=1867.0571
+[Train] County 25009 window 202126-202130 epoch 6/10 loss=1791.5429
+[Train] County 25009 window 202126-202130 epoch 7/10 loss=2025.8571
+[Train] County 25009 window 202126-202130 epoch 8/10 loss=1825.6571
+[Train] County 25009 window 202126-202130 epoch 9/10 loss=1779.0571
+[Train] County 25009 window 202126-202130 epoch 10/10 loss=1741.1714
+[SAVE] Stored calibration params at Results/calib_params_jul21/25009_202126-202130.pt
+
+=== Training CalibNN for county 25013, window 202126-202130 ===
+[Train] County 25013 window 202126-202130 epoch 1/10 loss=5099.6286
+[Train] County 25013 window 202126-202130 epoch 2/10 loss=3006.6286
+[Train] County 25013 window 202126-202130 epoch 3/10 loss=2187.6000
+[Train] County 25013 window 202126-202130 epoch 4/10 loss=1878.2857
+[Train] County 25013 window 202126-202130 epoch 5/10 loss=1902.6000
+[Train] County 25013 window 202126-202130 epoch 6/10 loss=1753.2286
+[Train] County 25013 window 202126-202130 epoch 7/10 loss=1976.8286
+[Train] County 25013 window 202126-202130 epoch 8/10 loss=1880.2000
+[Train] County 25013 window 202126-202130 epoch 9/10 loss=1983.6286
+[Train] County 25013 window 202126-202130 epoch 10/10 loss=1923.6857
+[SAVE] Stored calibration params at Results/calib_params_jul21/25013_202126-202130.pt
+
+=== Training CalibNN for county 25021, window 202126-202130 ===
+[Train] County 25021 window 202126-202130 epoch 1/10 loss=2712.8857
+[Train] County 25021 window 202126-202130 epoch 2/10 loss=1567.0857
+[Train] County 25021 window 202126-202130 epoch 3/10 loss=1400.1714
+[Train] County 25021 window 202126-202130 epoch 4/10 loss=1576.4857
+[Train] County 25021 window 202126-202130 epoch 5/10 loss=1526.6286
+[Train] County 25021 window 202126-202130 epoch 6/10 loss=1359.7143
+[Train] County 25021 window 202126-202130 epoch 7/10 loss=1472.6857
+[Train] County 25021 window 202126-202130 epoch 8/10 loss=1481.5429
+[Train] County 25021 window 202126-202130 epoch 9/10 loss=1440.6571
+[Train] County 25021 window 202126-202130 epoch 10/10 loss=1411.7714
+[SAVE] Stored calibration params at Results/calib_params_jul21/25021_202126-202130.pt
+
+=== Training CalibNN for county 25023, window 202126-202130 ===
+[Train] County 25023 window 202126-202130 epoch 1/10 loss=4824.0571
+[Train] County 25023 window 202126-202130 epoch 2/10 loss=3183.1714
+[Train] County 25023 window 202126-202130 epoch 3/10 loss=2938.6857
+[Train] County 25023 window 202126-202130 epoch 4/10 loss=2511.0286
+[Train] County 25023 window 202126-202130 epoch 5/10 loss=2290.9143
+[Train] County 25023 window 202126-202130 epoch 6/10 loss=2152.1714
+[Train] County 25023 window 202126-202130 epoch 7/10 loss=1991.7429
+[Train] County 25023 window 202126-202130 epoch 8/10 loss=2026.1143
+[Train] County 25023 window 202126-202130 epoch 9/10 loss=1957.7714
+[Train] County 25023 window 202126-202130 epoch 10/10 loss=1820.5143
+[SAVE] Stored calibration params at Results/calib_params_jul21/25023_202126-202130.pt
+
+=== Training CalibNN for county 25025, window 202126-202130 ===
+[Train] County 25025 window 202126-202130 epoch 1/10 loss=6120.0857
+[Train] County 25025 window 202126-202130 epoch 2/10 loss=5016.0286
+[Train] County 25025 window 202126-202130 epoch 3/10 loss=4463.3143
+[Train] County 25025 window 202126-202130 epoch 4/10 loss=4347.8286
+[Train] County 25025 window 202126-202130 epoch 5/10 loss=4185.8571
+[Train] County 25025 window 202126-202130 epoch 6/10 loss=4243.2000
+[Train] County 25025 window 202126-202130 epoch 7/10 loss=3990.2571
+[Train] County 25025 window 202126-202130 epoch 8/10 loss=4181.4000
+[Train] County 25025 window 202126-202130 epoch 9/10 loss=4207.4000
+[Train] County 25025 window 202126-202130 epoch 10/10 loss=4167.8857
+[SAVE] Stored calibration params at Results/calib_params_jul21/25025_202126-202130.pt
+
+=== Training CalibNN for county 25027, window 202126-202130 ===
+[Train] County 25027 window 202126-202130 epoch 1/10 loss=3193.0286
+[Train] County 25027 window 202126-202130 epoch 2/10 loss=2344.8571
+[Train] County 25027 window 202126-202130 epoch 3/10 loss=2116.0000
+[Train] County 25027 window 202126-202130 epoch 4/10 loss=2052.8000
+[Train] County 25027 window 202126-202130 epoch 5/10 loss=2076.3143
+[Train] County 25027 window 202126-202130 epoch 6/10 loss=2101.8286
+[Train] County 25027 window 202126-202130 epoch 7/10 loss=2098.5143
+[Train] County 25027 window 202126-202130 epoch 8/10 loss=2023.1429
+[Train] County 25027 window 202126-202130 epoch 9/10 loss=2112.6857
+[Train] County 25027 window 202126-202130 epoch 10/10 loss=2133.2857
+[SAVE] Stored calibration params at Results/calib_params_jul21/25027_202126-202130.pt

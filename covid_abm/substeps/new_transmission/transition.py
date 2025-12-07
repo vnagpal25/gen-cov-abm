@@ -127,7 +127,8 @@ class NewTransmission(SubstepTransitionMessagePassing):
         return newly_exposed_today*(t+1+exposed_to_infected_time) + (1 - newly_exposed_today)*new_transition_times
 
     def _generate_one_hot_tensor(self, timestep, num_timesteps):
-        timestep_tensor = torch.tensor([timestep])
+        clamped = max(0, min(int(timestep), num_timesteps - 1))
+        timestep_tensor = torch.tensor([clamped])
         one_hot_tensor = F.one_hot(timestep_tensor, num_classes=num_timesteps)
         one_hot_tensor = one_hot_tensor.view(1, -1)  # Ensure 2D shape (1, num_timesteps)
         return one_hot_tensor.to(self.device)[0]

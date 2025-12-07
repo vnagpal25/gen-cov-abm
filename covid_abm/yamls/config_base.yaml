@@ -10,7 +10,7 @@ simulation_metadata:
   MORTALITY_VAR: 4
   NEIGHBORHOOD: Astoria
   NUM_TRAIN_WEEKS: 2
-  NUM_WEEKS: 5
+  NUM_WEEKS: 2
   OPENAI_API_KEY: None
   RECOVERED_TO_SUSCEPTIBLE_TIME: 100
   RECOVERED_VAR: 3
@@ -20,10 +20,10 @@ simulation_metadata:
   USE_GROUND_TRUTH_4WK_AVG: false
   USE_GROUND_TRUTH_CASE_NUMBERS: false
   INITIAL_INFECTION_RATE: 0.04
-  age_group_file: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample5000/age.pickle
+  age_group_file: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample30000/age.pickle
   device: cpu
-  disease_stage_file: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample5000/disease_stages.csv
-  infection_network_file: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample5000/mobility_networks/0.csv
+  disease_stage_file: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample30000/disease_stages.csv
+  infection_network_file: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample30000/mobility_networks/0.csv
   initial_infection_ratio: 0.04
   learning_params:
     betas:
@@ -32,12 +32,12 @@ simulation_metadata:
     lr: 5e-3
     lr_gamma: 0.9999
     model_path: saved_model.pth
-  mapping_path: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample5000/mapping.json
-  num_agents: 5000
+  mapping_path: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample30000/mapping.json
+  num_agents: 30000
   num_episodes: 1
   num_steps_per_episode: 35
   num_substeps_per_step: 2
-  population_dir: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample5000
+  population_dir: /home/namishah/alex/gen-cov-abm/populations/pop25001_sample30000
 state:
   agents:
     citizens:

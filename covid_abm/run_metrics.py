@@ -6,7 +6,10 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+import pandas as pd
 import yaml
+
+from covid_abm.utils.windows import WindowSpec, derive_windows
 
 
 COUNTIES = [
@@ -15,16 +18,10 @@ COUNTIES = [
     "25005",
     "25009",
     "25013",
-    "25015",
     "25021",
     "25023",
     "25025",
     "25027",
-]
-
-WINDOWS = [
-    {"label": "202027-202031", "offset": 30, "start_week": 202027},
-    {"label": "202031-202035", "offset": 65, "start_week": 202031},
 ]
 
 METRIC_PATTERN = re.compile(
@@ -82,9 +79,24 @@ def run_simulation(
     return nd, rmse, mae, stdout
 
 
-def prepare_config(base_config: dict, county: str) -> dict:
+def infer_population_size(pop_prefix: str) -> int:
+    age_pickle = Path(f"{pop_prefix}/age.pickle")
+    if not age_pickle.exists():
+        raise FileNotFoundError(f"{age_pickle} not found.")
+    series = pd.read_pickle(age_pickle)
+    if not isinstance(series, pd.Series):
+        raise ValueError(f"{age_pickle} did not contain a pandas Series.")
+    return len(series)
+
+
+def prepare_config(base_config: dict, county: str, population_suffix: str) -> dict:
     cfg = copy.deepcopy(base_config)
-    pop_prefix = f"populations/pop{county}_sample5000"
+    pop_prefix = f"populations/pop{county}_{population_suffix}"
+    if not Path(pop_prefix).exists():
+        raise FileNotFoundError(
+            f"Population directory {pop_prefix} not found. Run the sampler first."
+        )
+    pop_size = infer_population_size(pop_prefix)
     cfg["simulation_metadata"]["population_dir"] = pop_prefix
     cfg["simulation_metadata"]["age_group_file"] = f"{pop_prefix}/age.pickle"
     cfg["simulation_metadata"]["disease_stage_file"] = f"{pop_prefix}/disease_stages.csv"
@@ -92,6 +104,7 @@ def prepare_config(base_config: dict, county: str) -> dict:
         "infection_network_file"
     ] = f"{pop_prefix}/mobility_networks/0.csv"
     cfg["simulation_metadata"]["mapping_path"] = f"{pop_prefix}/mapping.json"
+    cfg["simulation_metadata"]["num_agents"] = pop_size
     try:
         age_prop = cfg["state"]["agents"]["citizens"]["properties"]["age"]
         age_prop["initialization_function"]["arguments"]["file_path"]["value"] = cfg[
@@ -155,6 +168,27 @@ def main():
         default="Results/calib_params",
         help="Directory containing {county}_{window}.pt calibration tensors.",
     )
+    parser.add_argument(
+        "--start_date",
+        default="2020-06-01",
+        help="Inclusive start date for truth windows (YYYY-MM-DD).",
+    )
+    parser.add_argument(
+        "--end_date",
+        default="2021-07-31",
+        help="Inclusive end date for truth windows (YYYY-MM-DD).",
+    )
+    parser.add_argument(
+        "--window_days",
+        type=int,
+        default=None,
+        help="Days per simulation window. Defaults to num_steps_per_episode.",
+    )
+    parser.add_argument(
+        "--population_suffix",
+        default="sample30000",
+        help="Population directory suffix (e.g., sample30000).",
+    )
     args = parser.parse_args()
 
     base_config_path = Path(args.base_config)
@@ -165,20 +199,26 @@ def main():
     results = []
 
     calib_dir = Path(args.calib_dir)
+    window_days = args.window_days or base_config["simulation_metadata"]["num_steps_per_episode"]
+    windows: list[WindowSpec] | None = None
 
     for county in COUNTIES:
         gt_file = Path(f"data/daily_county_data/{county}_daily_data.csv")
         if not gt_file.exists():
             print(f"[WARN] Ground truth file missing for {county}, skipping.")
             continue
-        cfg = prepare_config(base_config, county)
+        if windows is None:
+            windows = derive_windows(gt_file, args.start_date, args.end_date, window_days)
+            if not windows:
+                raise RuntimeError("No windows generated for the provided date span.")
+        cfg = prepare_config(base_config, county, args.population_suffix)
         tmp_cfg_path = write_temp_config(cfg)
         try:
-            for window in WINDOWS:
+            for window in windows:
                 try:
                     calib_path = None
                     if args.use_calib:
-                        calib_path = calib_dir / f"{county}_{window['label']}.pt"
+                        calib_path = calib_dir / f"{county}_{window.label}.pt"
                         if not calib_path.exists():
                             print(
                                 f"[WARN] Missing calibration file {calib_path}, skipping calibrated run."
@@ -187,27 +227,27 @@ def main():
                     nd, rmse, mae, stdout = run_simulation(
                         tmp_cfg_path,
                         gt_file,
-                        window["offset"],
+                        window.offset,
                         args.truth_column,
                         calib_path=calib_path,
                     )
                     results.append(
                         {
                             "county": county,
-                            "window": window["label"],
-                            "truth_offset": window["offset"],
+                            "window": window.label,
+                            "truth_offset": window.offset,
                             "ND": nd,
                             "RMSE": rmse,
                             "MAE": mae,
                         }
                     )
                     print(
-                        f"[OK] County {county}, window {window['label']}: "
+                        f"[OK] County {county}, window {window.label}: "
                         f"ND={nd:.4f}, RMSE={rmse:.4f}, MAE={mae:.4f}"
                     )
                 except Exception as run_err:
                     print(
-                        f"[ERR] County {county}, window {window['label']} failed: {run_err}"
+                        f"[ERR] County {county}, window {window.label} failed: {run_err}"
                     )
         finally:
             os.remove(tmp_cfg_path)
@@ -238,8 +278,12 @@ def main():
         agg["MAE"].append(row["MAE"])
 
     print("\nAggregate metrics by window:")
-    for window in WINDOWS:
-        label = window["label"]
+    window_sequence: list[str]
+    if windows:
+        window_sequence = [w.label for w in windows]
+    else:
+        window_sequence = sorted({row["window"] for row in results})
+    for label in window_sequence:
         agg = aggregates.get(label)
         if not agg:
             print(f"- {label}: no data")
@@ -255,4 +299,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
