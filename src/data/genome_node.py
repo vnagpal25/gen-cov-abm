@@ -142,7 +142,7 @@ class CovidGenomeSequence:
 
         # Location (sub-regional)
         if "location" in node_attrs:
-            self.location = node_attrs["location"]["value"]
+            self.location = node_attrs["location"]["value"].strip()
         else:
             self.location = ""
 

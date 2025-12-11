@@ -1,9 +1,13 @@
 import csv
-from typing import Any, List, Dict
-from .genome_node import CovidGenomeSequence
+from typing import List, Dict
 from pathlib import Path
-from ..utils.path_utils import get_data_dir
 from tqdm import tqdm
+
+
+from genome_node import CovidGenomeSequence
+import sys
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from utils.path_utils import get_data_dir
 
 
 def tree_to_csv(
@@ -21,7 +25,7 @@ def tree_to_csv(
     """
     # Collect all objects in the tree
     all_objects = []
-    output_path = get_data_dir() / Path(output_file)
+    output_path = get_data_dir() / 'genomic_data' / Path(output_file)
 
     # Ensure parent directory exists
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -61,8 +65,6 @@ def tree_to_csv(
     other_fields = sorted(fieldnames - set(metadata_fields))
     fieldnames = metadata_fields + other_fields
 
-    # Write to CSV
-    print(f"\nWriting CSV with {len(all_objects)} rows...")
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -71,58 +73,4 @@ def tree_to_csv(
         for row in tqdm(all_objects, desc="Writing CSV", unit=" rows"):
             writer.writerow(row)
 
-    print(f"CSV written to {output_path}")
-
-
-def ancestor_union_to_csv(
-    ancestor_nodes: set,
-    output_file: str,
-):
-    """
-    Dump the ancestor union subgraph to CSV.
-
-    Args:
-        ancestor_nodes: set of GenomeSequence nodes that form the ancestor union.
-        output_file: path to output CSV file
-    """
-    # Output directory
-    output_path = get_data_dir() / Path(output_file)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    all_objects = []
-
-    # Build parent relationships dynamically from each node
-    print(f"Processing {len(ancestor_nodes)} ancestor nodes...")
-    for node in tqdm(ancestor_nodes, desc="Processing nodes", unit=" nodes"):
-        obj_data = {}
-
-        # Add metadata
-        obj_data["_depth"] = getattr(node, "depth", None)
-
-        # Add all primitive attributes (excludes mutations dict)
-        for attr, value in vars(node).items():
-            if type(value) in [str, int, float, bool]:
-                obj_data[attr] = value
-
-        all_objects.append(obj_data)
-
-    # Get all field names
-    fieldnames = set()
-    for obj_data in all_objects:
-        fieldnames.update(obj_data.keys())
-
-    metadata_fields = ["_depth"]
-    other_fields = sorted(fieldnames - set(metadata_fields))
-    fieldnames = metadata_fields + other_fields
-
-    # Write CSV
-    print(f"\nWriting CSV with {len(all_objects)} nodes...")
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        
-        # Write rows with progress bar
-        for row in tqdm(all_objects, desc="Writing CSV", unit=" rows"):
-            writer.writerow(row)
-
-    print(f"✓ CSV written to {output_path} (ancestor union)")
+    print(f"results written to {output_path}")
