@@ -62,7 +62,7 @@ All required inputs for the baseline experiment are already included in the repo
 ### 3. Training Calib-NN (Baseline + Genomics Calibration)
 Calib-NN is trained to map county-level features (i.e., weekly cases) to time-varying transmission and mortality parameters for each county and time window.
 
-To train Calib-NN on CPU for all counties and both windows, run the calibnn_baseline.sbatch file. You can edit the paths here to match your path directory to the folder as well as change compute usage. 
+To train Calib-NN on CPU for all counties and both windows, run the `calibnn_baseline.sbatch` file. You can edit the paths here to match your path directory to the folder as well as change compute usage. 
 
 Each `.pt` file is a small PyTorch checkpoint containing the tensors that will later be injected into the simulator.
 
@@ -71,7 +71,7 @@ For genomics-embedded calibration, run the calibnn.sbatch file instead. The resu
 ### 4. Running the ABM and Computing Metrics
 Once Calib-NN has finished training and the parameter files exist in `Baseline_Results/calib_params/`, you can generate the baseline performance metrics.
 
-To run the baseline calibrated simulations and compute ND, RMSE, and MAE for all counties and windows, run the metrics_baseline.sbatch file which will produce 2 files called metrics_summary + date under the Baseline_Results folder. You can open these files in any spreadsheet to inspect the baseline metrics.
+To run the baseline calibrated simulations and compute ND, RMSE, and MAE for all counties and windows, run the `metrics_baseline.sbatch` file which will produce 2 files called metrics_summary + date under the `Baseline_Results` folder. You can open these files in any spreadsheet to inspect the baseline metrics.
 
-For genomics-embedded calibration, run the metrics.sbatch file instead. The results will populate under Results folder this time. 
+For genomics-embedded calibration, run the `metrics.sbatch` file instead. The results will populate under Results folder this time. 
 
