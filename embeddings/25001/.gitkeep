@@ -1,3 +1,0 @@
-# This directory should contain genome embedding files for county 25001
-# Format: .npy or .pickle files with embeddings of shape (1280,) or (n, 1280)
-
