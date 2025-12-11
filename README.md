@@ -5,14 +5,11 @@ This repo contains a differentiable COVID-19 agent-based model (ABM) with a smal
 
 The workflow is:
 - **1**: Set up a Python environment and install dependencies.
-- **2**: 
-- **3**: Download and preprocess data for simulation and use the provided county-level data and population files (already included in the repo).
-- **4**: Train Calib-NN across all counties and time windows, without genomic embeddings.
-
-
-- **x**: Run the covid_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
+- **2**: Download and preprocess data for simulation and use the provided county-level data and population files (already included in the repo).
+- **3**: Train Calib-NN across all counties and time windows, without genomic embeddings.
+- **4**: Run the baseline_covid_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
 - **x**: Train Calib-NN across all counties and time windows, with genomic embeddings.
-- **x**: Run the gen-cov_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
+- **x**: Run the cov_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
 
 ### 1. Installation and Environment
 These commands assume you are in the project root directory (the folder containing this README and the `covid_abm` package).
@@ -30,6 +27,7 @@ pip install .
 
 - **Install the local AgentTorch dependency in editable mode**:
 ```bash
+git submodule add https://github.com/AgentTorch/AgentTorch.git AgentTorch
 pip install -e AgentTorch
 ```
 
@@ -60,36 +58,20 @@ All required inputs for the baseline experiment are already included in the repo
   - Refer to `notebooks/visualize-embeddings.ipynb` for visualizing the embedded sequences by subclade/strain
   - Execute `python src/data/sample_sequences_for_agents.py` to sample genome sequenecs for exposed agents by county level 
   - Optional: We were ultimately unsuccessful in finetuning our embeddings to more closely reflect the phylogenetic tree structure and unique characteristics of Covid-19. However, we have include the files for that efforts in our `src/data` directory: `train_embeddings.sh` and `fine_tune_embeddings-classification.py` 
-### 3. Training Calib-NN (Baseline Calibration)
+
+### 3. Training Calib-NN (Baseline + Genomics Calibration)
 Calib-NN is trained to map county-level features (i.e., weekly cases) to time-varying transmission and mortality parameters for each county and time window.
 
-To train Calib-NN on CPU for all counties and both windows, run:
-
-```bash
-conda activate covid
-python -m covid_abm.run_calib_nn \
-    --base_config covid_abm/yamls/config_base.yaml \
-    --truth_column cases \
-    --epochs 10
-```
+To train Calib-NN on CPU for all counties and both windows, run the calibnn_baseline.sbatch file. You can edit the paths here to match your path directory to the folder as well as change compute usage. 
 
 Each `.pt` file is a small PyTorch checkpoint containing the tensors that will later be injected into the simulator.
 
+For genomics-embedded calibration, run the calibnn.sbatch file instead. The results will populate under Results folder this time. 
+
 ### 4. Running the ABM and Computing Metrics
-Once Calib-NN has finished training and the parameter files exist in `Results/calib_params/`, you can generate the baseline performance metrics.
+Once Calib-NN has finished training and the parameter files exist in `Baseline_Results/calib_params/`, you can generate the baseline performance metrics.
 
-To run the calibrated simulations and compute ND, RMSE, and MAE for all counties and windows:
+To run the baseline calibrated simulations and compute ND, RMSE, and MAE for all counties and windows, run the metrics_baseline.sbatch file which will produce 2 files called metrics_summary + date under the Baseline_Results folder. You can open these files in any spreadsheet to inspect the baseline metrics.
 
-```bash
-conda activate covid
-python covid_abm/run_metrics.py \
-    --base_config covid_abm/yamls/config_base.yaml \
-    --truth_column cases \
-    --use_calib \
-    --calib_dir Results/calib_params \
-    --output_csv Results/metrics_summary_calib.csv
-```
-
-You can open `Results/metrics_summary_calib.csv` in any spreadsheet to inspect the baseline metrics.
-
+For genomics-embedded calibration, run the metrics.sbatch file instead. The results will populate under Results folder this time. 
 
