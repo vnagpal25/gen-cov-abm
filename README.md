@@ -5,24 +5,27 @@ This repo contains a differentiable COVID-19 agent-based model (ABM) with a smal
 
 The workflow is:
 - **1**: Set up a Python environment and install dependencies.
-- **2**: Use the provided county-level data and population files (already included in the repo).
-- **3**: Train Calib-NN across all counties and time windows, without genomic embeddings.
-- **4**: Run the covid_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
-- **5**: Train Calib-NN across all counties and time windows, with genomic embeddings.
-- **6**: Run the gen-cov_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
+- **2**: 
+- **3**: Download and preprocess data for simulation and use the provided county-level data and population files (already included in the repo).
+- **4**: Train Calib-NN across all counties and time windows, without genomic embeddings.
+
+
+- **x**: Run the covid_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
+- **x**: Train Calib-NN across all counties and time windows, with genomic embeddings.
+- **x**: Run the gen-cov_abm to produce ND/RMSE/MAE metrics for the calibrated baseline.
 
 ### 1. Installation and Environment
 These commands assume you are in the project root directory (the folder containing this README and the `covid_abm` package).
 
 - **Create and activate a conda environment** (only needed once):
 ```bash
-conda create -n covid python=3.10
-conda activate covid
+conda create -n covid_abm_venv python=3.10
+conda activate covid_abm_venv
 ```
 
-- **Install Python dependencies**:
-```bash
-pip install -r requirements.txt
+- **Install Python dependencies from pyproject.toml**:
+```bash 
+pip install .
 ```
 
 - **Install the local AgentTorch dependency in editable mode**:
@@ -43,8 +46,20 @@ All required inputs for the baseline experiment are already included in the repo
     - 5,000 agents per run
     - Two 5-week evaluation windows (July 2020 and August 2020)
 - **Genomics Data**:
-
-
+  - Navigate to the `data` directory and run the bash script `curl_broad_institute_data.sh` to pull the raw data from the Broad Institute Covid-19 dataset
+    ```bash
+    cd data/genomic_data
+    sh curl_broad_institute_data.sh
+    ``` 
+  - Refer to `notebooks/explore-data.ipynb` for a preliminary data exploration
+  - Execute `python src/data/extract_sequences.py` to extract the protein and genome sequences from the phylogenetic tree
+  - Execute the following`python src/data/embed_sequences.py` to extract the embeddings of the ORF1a protein sequences using the ESM-2 protein language model
+    ```bash
+    python embed_sequences.py orf1a_sequence --batch-size 8
+    ```
+  - Refer to `notebooks/visualize-embeddings.ipynb` for visualizing the embedded sequences by subclade/strain
+  - Execute `python src/data/sample_sequences_for_agents.py` to sample genome sequenecs for exposed agents by county level 
+  - Optional: We were ultimately unsuccessful in finetuning our embeddings to more closely reflect the phylogenetic tree structure and unique characteristics of Covid-19. However, we have include the files for that efforts in our `src/data` directory: `train_embeddings.sh` and `fine_tune_embeddings-classification.py` 
 ### 3. Training Calib-NN (Baseline Calibration)
 Calib-NN is trained to map county-level features (i.e., weekly cases) to time-varying transmission and mortality parameters for each county and time window.
 
