@@ -1,4 +1,0 @@
-ERROR: Could not install packages due to an OSError: [Errno 30] Read-only file system: '/sw/pkgs/arc/python/3.10.4/bin/pip'
-
-WARNING: You are using pip version 22.0.4; however, version 25.3 is available.
-You should consider upgrading via the '/sw/pkgs/arc/python/3.10.4/bin/python -m pip install --upgrade pip' command.
